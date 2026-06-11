@@ -433,7 +433,7 @@ function SidebarContent({ grouped, activeItemId, onSelect }: SidebarContentProps
                   onClick={() => onSelect(item.id)}
                   className={`w-full text-left px-3 py-2 text-sm font-semibold rounded-[12px] transition duration-150 flex items-center justify-between ${
                     isSelected
-                      ? "bg-brand-neutral/40 text-primary border-r-2 border-primary pl-3"
+                      ? "bg-brand-neutral/40 text-primary"
                       : "text-brand-primary/70 hover:text-brand-primary hover:bg-brand-neutral/20"
                   }`}
                 >
@@ -461,7 +461,7 @@ function SidebarContent({ grouped, activeItemId, onSelect }: SidebarContentProps
                     onClick={() => onSelect(item.id)}
                     className={`w-full text-left px-3 py-2 text-sm font-medium rounded-[12px] transition duration-150 flex items-center justify-between ${
                       isSelected
-                        ? "bg-brand-neutral/40 text-primary border-r-2 border-primary pl-3"
+                        ? "bg-brand-neutral/40 text-primary"
                         : "text-brand-primary/70 hover:text-brand-primary hover:bg-brand-neutral/20"
                     }`}
                   >

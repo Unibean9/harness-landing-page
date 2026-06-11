@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
-import { Layers3, Sun, Moon, Menu, X } from "lucide-react";
+import { Sun, Moon, Menu, X } from "lucide-react";
 import { navItems } from "@/lib/navigation";
 
 
@@ -40,10 +40,14 @@ export function Header({ showSidebarToggle, isSidebarOpen, onToggleSidebar }: He
             </button>
           )}
 
-          <Link href="/" className="flex items-center gap-3">
-            <span className="flex size-9 items-center justify-center rounded-[10px] bg-brand-primary text-brand-surface">
-              <Layers3 className="size-4" strokeWidth={1.8} />
-            </span>
+          <Link href="/" className="flex items-center gap-3 group transition-transform duration-200 active:scale-98">
+            <div className="relative flex size-9 items-center justify-center rounded-full border border-border bg-brand-surface overflow-hidden shadow-sm">
+              <img
+                src="/logo-harness.png"
+                alt="Harness Logo"
+                className="size-full object-cover transition-transform duration-200 group-hover:scale-105"
+              />
+            </div>
             <span className="font-display text-2xl leading-none tracking-[-0.02em] font-bold text-brand-primary hidden sm:inline-block">
               Harness
             </span>
