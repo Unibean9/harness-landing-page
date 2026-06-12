@@ -25,7 +25,7 @@ export default function Home() {
       <Header currentPath="/" />
       <HarnessMotion />
 
-      <main className="flex-1 overflow-x-hidden w-full max-w-full">
+      <main id="main-content" className="flex-1 overflow-x-hidden w-full max-w-full">
         <HeroSection />
         <DefinitionSection />
         <ProblemSection />

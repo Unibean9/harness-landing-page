@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Libre_Caslon_Display } from "next/font/google";
+import { SkipToContent } from "@/components/layout/skip-to-content";
 import Providers from "@/lib/providers";
 import { buildOgImageMetadata } from "@/lib/seo/og-image";
 import { RootJsonLd } from "@/lib/seo/root-json-ld";
@@ -71,6 +72,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <Providers>
+          <SkipToContent />
           {children}
           <RootJsonLd />
         </Providers>

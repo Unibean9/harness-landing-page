@@ -37,11 +37,11 @@ export function HarnessLayersStack() {
                 <span className="w-7 shrink-0 font-mono text-xs font-bold tabular-nums text-primary">
                   {layer.index}
                 </span>
-                <div className="flex min-w-0 flex-1 flex-wrap items-baseline justify-between gap-x-4 gap-y-0.5">
-                  <p className="font-display text-base font-bold text-brand-primary group-hover:text-primary sm:text-lg sm:whitespace-nowrap">
+                <div className="flex min-w-0 flex-1 flex-col gap-0.5 sm:flex-row sm:flex-wrap sm:items-baseline sm:justify-between sm:gap-x-4">
+                  <p className="font-display text-base font-bold text-brand-primary group-hover:text-primary sm:text-lg">
                     {layer.label}
                   </p>
-                  <p className="text-sm text-brand-primary/55 sm:whitespace-nowrap">{layer.role}</p>
+                  <p className="text-sm text-brand-primary/55">{layer.role}</p>
                 </div>
               </article>
             </li>

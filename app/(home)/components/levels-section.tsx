@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils/cn";
 import { SectionShell } from "./section-shell";
 import { SectionHeader } from "./section-header";
 import { Subheading } from "./subheading";
@@ -44,19 +45,30 @@ export function LevelsSection() {
 
         <div className="space-y-6" data-motion-item>
           <Subheading>Lộ trình năng lực</Subheading>
-          <div className="inline-flex flex-wrap gap-2 rounded-full border border-border bg-brand-surface/60 p-1">
-            {levels.map((item) => (
-              <span
-                key={item.step}
-                className={
-                  item.highlight
-                    ? "rounded-full bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground"
-                    : "rounded-full px-4 py-2 text-xs font-semibold text-brand-primary/65"
-                }
-              >
-                {item.capability}
-              </span>
-            ))}
+          <div className="overflow-hidden rounded-xl border border-border bg-brand-surface/50">
+            <div className="grid grid-cols-1 divide-y divide-border md:grid-cols-3 md:divide-x md:divide-y-0">
+              {levels.map((item) => (
+                <div
+                  key={item.step}
+                  className={cn(
+                    "flex items-center gap-3 px-4 py-3.5 md:flex-col md:items-start md:gap-1.5 md:px-5 md:py-4 lg:items-center lg:text-center",
+                    item.highlight && "bg-brand-accent-wash"
+                  )}
+                >
+                  <span className="font-mono text-xs font-bold tabular-nums text-primary">
+                    {item.step}
+                  </span>
+                  <span
+                    className={cn(
+                      "text-sm font-semibold leading-snug",
+                      item.highlight ? "text-primary" : "text-brand-primary/70"
+                    )}
+                  >
+                    {item.capability}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -67,14 +79,16 @@ export function LevelsSection() {
               data-motion-item
               className={item.highlight ? "step-row-active" : "step-row"}
             >
-              <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
-                <span className="font-mono text-xs font-bold tabular-nums text-primary">
-                  {item.step}
-                </span>
-                <h4 className="font-display text-base font-bold text-brand-primary">
-                  {item.level}
-                </h4>
-                <span className="code-inline">{item.capability}</span>
+              <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-baseline sm:gap-x-4 sm:gap-y-1">
+                <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                  <span className="font-mono text-xs font-bold tabular-nums text-primary">
+                    {item.step}
+                  </span>
+                  <h4 className="font-display text-base font-bold text-brand-primary sm:text-lg">
+                    {item.level}
+                  </h4>
+                </div>
+                <span className="code-inline w-fit">{item.capability}</span>
               </div>
               <p className="mt-3 max-w-prose text-sm leading-relaxed text-brand-primary/75">
                 {item.description}

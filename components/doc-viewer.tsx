@@ -293,7 +293,7 @@ export function DocViewer({ initialTabs, defaultTabId }: DocViewerProps) {
         <div className="flex-1 grid grid-cols-1 xl:grid-cols-[1fr_240px] px-4 sm:px-6 lg:px-8 py-8 gap-8 min-w-0">
           
           {/* Main Markdown Article */}
-          <article ref={mainContentRef} className="min-w-0 max-w-3xl pb-16">
+          <article id="main-content" ref={mainContentRef} className="min-w-0 max-w-3xl pb-16">
             {activeItem ? (
               <>
                 <div 

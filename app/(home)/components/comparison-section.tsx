@@ -22,17 +22,21 @@ export function ComparisonSection() {
         <ComparisonMatrix />
 
         <div className="callout-accent rounded-r-2xl px-6 py-5 sm:px-7 sm:py-6" data-motion-item>
-          <p className="font-sans text-base leading-relaxed text-brand-primary/80 lg:text-[1.05rem] lg:whitespace-nowrap">
+          <p className="text-pretty font-sans text-base leading-relaxed text-brand-primary/80 lg:text-[1.05rem]">
             <span className="font-semibold text-brand-primary">Prompt</span> giúp AI hiểu yêu cầu.
-            <span className="mx-1.5 text-brand-secondary" aria-hidden="true">
+            <span className="mx-1.5 hidden text-brand-secondary sm:inline" aria-hidden="true">
               ·
             </span>
-            <span className="font-semibold text-brand-primary">Context</span> giúp AI có dữ liệu.
-            <span className="mx-1.5 text-brand-secondary" aria-hidden="true">
+            <span className="block sm:inline">
+              <span className="font-semibold text-brand-primary">Context</span> giúp AI có dữ liệu.
+            </span>
+            <span className="mx-1.5 hidden text-brand-secondary sm:inline" aria-hidden="true">
               ·
             </span>
-            <span className="font-semibold text-primary">Harness</span> giúp AI vận hành trong một
-            hệ thống đáng tin cậy.
+            <span className="block sm:inline">
+              <span className="font-semibold text-primary">Harness</span> giúp AI vận hành trong một
+              hệ thống đáng tin cậy.
+            </span>
           </p>
         </div>
       </div>

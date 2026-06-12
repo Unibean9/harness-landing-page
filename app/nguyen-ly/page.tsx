@@ -20,7 +20,7 @@ export default function NguyenLyPage() {
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
       <Header currentPath="/nguyen-ly" />
-      <main className="flex-1 w-full max-w-7xl mx-auto px-4 pt-32 pb-16">
+      <main id="main-content" className="flex-1 w-full max-w-7xl mx-auto px-4 pt-32 pb-16">
         <div className="max-w-3xl mb-16">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand-tertiary mb-3">Tư duy hệ thống</p>
           <h1 className="font-display text-[clamp(2.5rem,5vw,4.5rem)] leading-none font-bold text-brand-primary tracking-tight">

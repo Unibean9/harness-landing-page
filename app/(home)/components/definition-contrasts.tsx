@@ -34,16 +34,19 @@ export function DefinitionContrasts() {
         {contrasts.map((item) => (
           <article
             key={item.topic}
-            className="flex flex-wrap items-baseline gap-x-3 gap-y-1 px-5 py-4 sm:gap-x-4 sm:px-6 sm:py-4.5 lg:flex-nowrap"
+            className="space-y-2 px-5 py-4 sm:space-y-0 sm:flex sm:flex-wrap sm:items-baseline sm:gap-x-3 sm:gap-y-1 sm:px-6 sm:py-4.5 xl:flex-nowrap"
           >
-            <span className="code-inline shrink-0">{item.topic}</span>
-            <span className="font-display italic text-brand-primary/50 sm:whitespace-nowrap">
-              {item.common}
-            </span>
-            <span className="font-display font-bold text-primary" aria-hidden="true">
+            <span className="code-inline w-fit shrink-0">{item.topic}</span>
+            <span className="font-display italic text-brand-primary/50">{item.common}</span>
+            <span className="hidden font-display font-bold text-primary sm:inline" aria-hidden="true">
               →
             </span>
-            <span className="font-medium text-brand-primary sm:whitespace-nowrap">{item.harness}</span>
+            <span className="block font-medium text-brand-primary sm:inline">
+              <span className="font-display font-bold text-primary sm:hidden" aria-hidden="true">
+                →{" "}
+              </span>
+              {item.harness}
+            </span>
           </article>
         ))}
       </div>

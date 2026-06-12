@@ -23,7 +23,7 @@ function FormulaNode({ caption, label, highlight, className }: FormulaNodeProps)
       </span>
       <p
         className={cn(
-          "mt-2 font-display text-lg font-bold leading-snug sm:text-xl sm:whitespace-nowrap",
+          "mt-2 font-display text-lg font-bold leading-snug sm:text-xl xl:whitespace-nowrap",
           highlight ? "text-primary" : "text-brand-primary"
         )}
       >
@@ -56,12 +56,12 @@ export function FormulaDiagram() {
       className="rounded-2xl border border-border bg-brand-surface/50 px-5 py-7 sm:px-8 sm:py-8"
       data-motion-item
     >
-      <p className="mb-6 text-base leading-relaxed text-brand-primary/75 sm:mb-7 sm:text-lg lg:whitespace-nowrap">
+      <p className="mb-6 text-pretty text-base leading-relaxed text-brand-primary/75 sm:mb-7 sm:text-lg">
         Một hệ thống AI đáng tin cậy không chỉ cần model mạnh — cần thêm lớp môi trường
         bao quanh:
       </p>
 
-      <div className="hidden items-center gap-3 sm:flex lg:gap-5">
+      <div className="hidden items-center gap-3 md:flex lg:gap-5">
         <FormulaNode caption={steps[0].caption} label={steps[0].label} className="flex-1" />
         <FormulaOperator>+</FormulaOperator>
         <FormulaNode
@@ -74,7 +74,7 @@ export function FormulaDiagram() {
         <FormulaNode caption={steps[2].caption} label={steps[2].label} className="flex-1" />
       </div>
 
-      <div className="space-y-3 sm:hidden">
+      <div className="space-y-3 md:hidden">
         {steps.map((step, index) => (
           <div key={step.label}>
             <FormulaNode

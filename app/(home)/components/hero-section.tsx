@@ -29,7 +29,7 @@ export function HeroSection() {
     <SectionShell
       id="trang-chu"
       className="relative overflow-hidden border-b border-border/60"
-      innerClassName="relative flex min-h-[calc(100dvh-4.5rem)] flex-col justify-center py-28 md:py-32"
+      innerClassName="relative flex flex-col justify-center py-24 sm:py-28 md:min-h-[calc(100dvh-4.5rem)] md:py-32"
     >
       <div
         className="pointer-events-none absolute -right-32 top-0 size-128 rounded-full bg-primary/6 blur-3xl"
@@ -62,11 +62,11 @@ export function HeroSection() {
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center gap-3" data-hero-item>
-            <Link href="#dinh-nghia" className="btn-primary">
+          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center" data-hero-item>
+            <Link href="#dinh-nghia" className="btn-primary w-full sm:w-auto">
               Tìm hiểu cách hoạt động
             </Link>
-            <Link href="#muc-do" className="btn-ghost">
+            <Link href="#muc-do" className="btn-ghost w-full sm:w-auto">
               Xem các mức độ triển khai
             </Link>
           </div>
@@ -76,11 +76,11 @@ export function HeroSection() {
           <p className="font-display text-sm italic text-brand-secondary">
             Một harness tốt hướng tới
           </p>
-          <div className="grid overflow-hidden rounded-2xl border border-border bg-brand-surface/50 sm:grid-cols-3">
+          <div className="grid overflow-hidden rounded-2xl border border-border bg-brand-surface/50 md:grid-cols-3">
             {outcomes.map((item, index) => (
               <article
                 key={item.label}
-                className="border-b border-border px-5 py-5 last:border-b-0 sm:border-b-0 sm:border-r sm:px-6 sm:py-6 sm:last:border-r-0"
+                className="border-b border-border px-5 py-5 last:border-b-0 md:border-b-0 md:border-r md:px-6 md:py-6 md:last:border-r-0"
               >
                 <p className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5 text-base leading-snug">
                   <span className="font-mono text-xs font-bold tabular-nums text-primary">
