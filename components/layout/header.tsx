@@ -24,7 +24,7 @@ function desktopNavClass(isActive: boolean) {
     "relative whitespace-nowrap px-3 py-2 text-sm font-medium transition duration-300",
     isActive
       ? "font-display font-semibold text-primary after:absolute after:inset-x-2 after:-bottom-0.5 after:h-0.5 after:rounded-full after:bg-primary"
-      : "text-brand-primary/65 hover:text-brand-primary"
+      : "text-brand-primary/78 hover:text-brand-primary"
   );
 }
 
@@ -33,7 +33,7 @@ function mobileNavClass(isActive: boolean) {
     "block rounded-xl px-4 py-3 text-base font-semibold transition duration-300",
     isActive
       ? "bg-brand-accent-wash text-primary"
-      : "text-brand-primary/75 hover:bg-brand-neutral/30 hover:text-brand-primary"
+      : "text-brand-primary/85 hover:bg-brand-neutral/30 hover:text-brand-primary"
   );
 }
 
@@ -84,7 +84,7 @@ export function Header({ showSidebarToggle, isSidebarOpen, onToggleSidebar }: He
               <button
                 type="button"
                 onClick={onToggleSidebar}
-                className="rounded-lg p-2 text-brand-primary/70 transition hover:bg-brand-neutral/40 hover:text-brand-primary lg:hidden"
+                className="rounded-lg p-2 text-brand-primary/82 transition hover:bg-brand-neutral/40 hover:text-brand-primary lg:hidden"
                 aria-label="Mở menu tài liệu"
                 aria-expanded={isSidebarOpen}
               >
@@ -94,7 +94,7 @@ export function Header({ showSidebarToggle, isSidebarOpen, onToggleSidebar }: He
               <button
                 type="button"
                 onClick={() => setMobileNavOpen((open) => !open)}
-                className="rounded-lg p-2 text-brand-primary/70 transition hover:bg-brand-neutral/40 hover:text-brand-primary lg:hidden"
+                className="rounded-lg p-2 text-brand-primary/82 transition hover:bg-brand-neutral/40 hover:text-brand-primary lg:hidden"
                 aria-label={mobileNavOpen ? "Đóng menu" : "Mở menu"}
                 aria-expanded={mobileNavOpen}
                 aria-controls="mobile-site-nav"
@@ -139,7 +139,7 @@ export function Header({ showSidebarToggle, isSidebarOpen, onToggleSidebar }: He
               <button
                 type="button"
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                className="rounded-full border border-transparent p-2 text-brand-primary/70 transition duration-300 hover:border-border hover:bg-brand-surface/80 hover:text-brand-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+                className="rounded-full border border-transparent p-2 text-brand-primary/82 transition duration-300 hover:border-border hover:bg-brand-surface/80 hover:text-brand-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
                 title="Đổi giao diện"
                 aria-label="Đổi giao diện"
               >

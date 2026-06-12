@@ -61,7 +61,7 @@ export function LevelsSection() {
                   <span
                     className={cn(
                       "text-sm font-semibold leading-snug",
-                      item.highlight ? "text-primary" : "text-brand-primary/70"
+                      item.highlight ? "text-primary" : "text-brand-primary/82"
                     )}
                   >
                     {item.capability}
@@ -90,11 +90,11 @@ export function LevelsSection() {
                 </div>
                 <span className="code-inline w-fit">{item.capability}</span>
               </div>
-              <p className="mt-3 max-w-prose text-sm leading-relaxed text-brand-primary/75">
+              <p className="mt-3 max-w-prose text-sm leading-relaxed text-body">
                 {item.description}
               </p>
-              <p className="mt-3 text-sm text-brand-primary/60">
-                <span className="font-semibold text-brand-primary/75">Phù hợp: </span>
+              <p className="mt-3 text-sm text-body-muted">
+                <span className="font-semibold text-brand-primary/85">Phù hợp: </span>
                 {item.fit}
               </p>
             </article>

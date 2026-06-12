@@ -104,7 +104,7 @@ export function ComparisonMatrix() {
                       "px-5 py-6 text-base leading-relaxed align-top",
                       method.highlight
                         ? "bg-brand-accent-wash/50 font-medium text-brand-primary"
-                        : "text-brand-primary/75"
+                        : "text-body"
                     )}
                   >
                     {method[dim.key]}
@@ -151,7 +151,7 @@ export function ComparisonMatrix() {
               {dimensions.map((dim) => (
                 <div key={dim.key}>
                   <dt className="font-display text-sm italic text-primary">{dim.label}</dt>
-                  <dd className="mt-1 text-base leading-relaxed text-brand-primary/75">
+                  <dd className="mt-1 text-base leading-relaxed text-body">
                     {method[dim.key]}
                   </dd>
                 </div>

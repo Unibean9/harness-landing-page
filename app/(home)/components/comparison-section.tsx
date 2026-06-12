@@ -22,7 +22,7 @@ export function ComparisonSection() {
         <ComparisonMatrix />
 
         <div className="callout-accent rounded-r-2xl px-6 py-5 sm:px-7 sm:py-6" data-motion-item>
-          <p className="text-pretty font-sans text-base leading-relaxed text-brand-primary/80 lg:text-[1.05rem]">
+          <p className="text-pretty font-sans text-base leading-relaxed text-body lg:text-[1.05rem]">
             <span className="font-semibold text-brand-primary">Prompt</span> giúp AI hiểu yêu cầu.
             <span className="mx-1.5 hidden text-brand-secondary sm:inline" aria-hidden="true">
               ·

@@ -28,8 +28,8 @@ export function HeroSection() {
   return (
     <SectionShell
       id="trang-chu"
-      className="relative overflow-hidden border-b border-border/60"
-      innerClassName="relative flex flex-col justify-center py-24 sm:py-28 md:min-h-[calc(100dvh-4.5rem)] md:py-32"
+      className="relative overflow-hidden border-b border-border/60 py-0"
+      innerClassName="relative flex flex-col justify-center pt-24 pb-14 sm:pt-28 sm:pb-16 md:pt-28 md:pb-20"
     >
       <div
         className="pointer-events-none absolute -right-32 top-0 size-128 rounded-full bg-primary/6 blur-3xl"
@@ -40,7 +40,7 @@ export function HeroSection() {
         aria-hidden="true"
       />
 
-      <div className="relative space-y-10 lg:space-y-12">
+      <div className="relative space-y-8 lg:space-y-10">
         <div className="max-w-4xl space-y-8">
           <div className="flex items-center gap-3" data-hero-item>
             <span className="section-label">— Bắt đầu</span>
@@ -55,7 +55,7 @@ export function HeroSection() {
             <p className="max-w-2xl font-display text-[clamp(1.35rem,2.8vw,2rem)] font-semibold leading-snug tracking-[-0.015em] text-brand-primary/88 text-pretty">
               Kỹ thuật thiết lập môi trường hoạt động cho AI
             </p>
-            <p className="max-w-prose text-base leading-[1.75] text-brand-primary/72 sm:text-lg">
+            <p className="max-w-prose text-base leading-[1.75] text-body sm:text-lg">
               Kỷ luật thiết kế môi trường có cấu trúc xung quanh các mô hình AI — không chỉ dựa
               vào model mạnh hay prompt khéo. Giúp coding agent và workflow automation vận hành
               đáng tin cậy, an toàn và có thể lặp lại.
@@ -90,7 +90,7 @@ export function HeroSection() {
                   <span className="text-brand-secondary" aria-hidden="true">
                     —
                   </span>
-                  <span className="text-brand-primary/65">{item.detail}</span>
+                  <span className="text-body-muted">{item.detail}</span>
                 </p>
               </article>
             ))}
@@ -99,7 +99,7 @@ export function HeroSection() {
       </div>
 
       <nav
-        className="relative mt-16 flex flex-wrap items-center gap-x-2 gap-y-3 border-t border-border/70 pt-8 lg:mt-20"
+        className="relative mt-10 flex flex-wrap items-center gap-x-2 gap-y-3 border-t border-border/70 pt-6 lg:mt-12"
         aria-label="Mục lục trang"
         data-hero-item
       >
@@ -110,13 +110,13 @@ export function HeroSection() {
         {sectionAnchors.map((item, index) => (
           <span key={item.href} className="inline-flex items-center gap-2">
             {index > 0 && (
-              <span className="text-brand-secondary/60" aria-hidden="true">
+              <span className="text-brand-secondary/80" aria-hidden="true">
                 ·
               </span>
             )}
             <Link
               href={item.href}
-              className="text-sm font-semibold text-brand-primary/70 transition duration-300 hover:text-primary"
+              className="text-sm font-semibold text-brand-primary/80 transition duration-300 hover:text-primary"
             >
               {item.label}
             </Link>

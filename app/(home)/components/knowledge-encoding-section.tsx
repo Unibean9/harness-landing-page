@@ -29,7 +29,7 @@ export function KnowledgeEncodingSection() {
             Mã hóa kiến thức chuyên môn vào môi trường AI
           </h2>
 
-          <p className="text-lg leading-relaxed text-brand-primary/72">
+          <p className="text-lg leading-relaxed text-body">
             Một harness tốt sẽ lưu giữ và mã hóa những đánh giá chuyên môn của tổ chức thành
             một dạng mà AI có thể thực thi.
           </p>
@@ -44,7 +44,7 @@ export function KnowledgeEncodingSection() {
                 key={row.before}
                 className="grid grid-cols-2 border-b border-border last:border-b-0 text-sm"
               >
-                <div className="px-5 py-4 text-brand-primary/65">{row.before}</div>
+                <div className="px-5 py-4 text-body-muted">{row.before}</div>
                 <div className="border-l border-border px-5 py-4 text-brand-primary/80">
                   {row.after}
                 </div>

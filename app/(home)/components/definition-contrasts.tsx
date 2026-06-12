@@ -25,7 +25,7 @@ const contrasts: DefinitionContrast[] = [
 export function DefinitionContrasts() {
   return (
     <div className="space-y-5" data-motion-item>
-      <p className="text-pretty text-base leading-relaxed text-brand-primary/75 sm:text-lg">
+      <p className="text-pretty text-base leading-relaxed text-body sm:text-lg">
         Harness Engineering thường bị gán nhầm với ba hướng quen thuộc — định nghĩa đúng là nhìn
         lại từng hướng.
       </p>
@@ -37,7 +37,7 @@ export function DefinitionContrasts() {
             className="space-y-2 px-5 py-4 sm:space-y-0 sm:flex sm:flex-wrap sm:items-baseline sm:gap-x-3 sm:gap-y-1 sm:px-6 sm:py-4.5 xl:flex-nowrap"
           >
             <span className="code-inline w-fit shrink-0">{item.topic}</span>
-            <span className="font-display italic text-brand-primary/50">{item.common}</span>
+            <span className="font-sans italic text-brand-secondary">{item.common}</span>
             <span className="hidden font-display font-bold text-primary sm:inline" aria-hidden="true">
               →
             </span>

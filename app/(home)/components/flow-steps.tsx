@@ -43,12 +43,12 @@ export function FlowSteps({ steps, className }: FlowStepsProps) {
             )}
           >
             <h4 className="text-sm font-semibold text-brand-primary">{step.title}</h4>
-            <p className="mt-1 text-sm leading-relaxed text-brand-primary/65">
+            <p className="mt-1 text-sm leading-relaxed text-body-muted">
               {step.description}
             </p>
             {step.fix && (
-              <p className="mt-3 border-t border-border/60 pt-3 text-sm leading-relaxed text-brand-primary/80">
-                <span className="font-display italic text-primary">Harness → </span>
+              <p className="mt-3 border-t border-border/60 pt-3 text-base leading-relaxed text-body">
+                <span className="font-semibold text-brand-emphasis">Harness → </span>
                 {step.fix}
               </p>
             )}

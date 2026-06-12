@@ -14,9 +14,10 @@ export function HarnessMotion() {
       const scaleFadeItems = gsap.utils.toArray<HTMLElement>("[data-scale-fade]");
 
       if (reduceMotion) {
-        gsap.set("[data-hero-item], [data-motion-item]", {
+        gsap.set("[data-hero-item], [data-motion-item], [data-symptom-item]", {
           opacity: 1,
           y: 0,
+          x: 0,
         });
         if (scaleFadeItems.length) {
           gsap.set(scaleFadeItems, { opacity: 1, scale: 1 });
@@ -61,6 +62,25 @@ export function HarnessMotion() {
           scrollTrigger: {
             trigger: section,
             start: "top 80%",
+            once: true,
+          },
+        });
+      });
+
+      gsap.utils.toArray<HTMLElement>("[data-symptom-list]").forEach((list) => {
+        const items = list.querySelectorAll<HTMLElement>("[data-symptom-item]");
+        if (!items.length) return;
+
+        gsap.set(items, { opacity: 0, y: 14 });
+        gsap.to(items, {
+          opacity: 1,
+          y: 0,
+          duration: 0.65,
+          ease: "power3.out",
+          stagger: 0.1,
+          scrollTrigger: {
+            trigger: list,
+            start: "top 82%",
             once: true,
           },
         });

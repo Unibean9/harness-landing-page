@@ -29,7 +29,7 @@ export function ImagePlaceholder({
       <div className="flex size-12 items-center justify-center rounded-full border border-primary/25 bg-brand-surface">
         <ImageIcon className="size-5 text-primary" strokeWidth={1.5} />
       </div>
-      <p className="max-w-xs text-sm leading-relaxed text-brand-primary/55">{label}</p>
+      <p className="max-w-xs text-sm leading-relaxed text-caption">{label}</p>
     </div>
   );
 }

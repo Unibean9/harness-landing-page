@@ -48,7 +48,7 @@ export function EditorialTable({
                     isLarge ? "py-5 text-base" : "py-4 text-sm",
                     col.key === highlightColumn
                       ? "font-medium text-brand-primary"
-                      : "text-brand-primary/75",
+                      : "text-body",
                     col.className
                   )}
                 >

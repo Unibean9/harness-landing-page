@@ -6,14 +6,17 @@ import { FlowSteps } from "./flow-steps";
 
 const symptoms = [
   {
+    signal: "Lệch mục tiêu",
     title: "AI hiểu sai mục tiêu",
     description: "Lệch yêu cầu ngay từ đầu vì thiếu định hướng rõ ràng",
   },
   {
+    signal: "Không kiểm chứng",
     title: "Kết quả không được kiểm chứng",
     description: "Output nghe hợp lý nhưng không qua quy trình đánh giá",
   },
   {
+    signal: "Drift tích lũy",
     title: "Lỗi nhỏ tích tụ lớn",
     description: "Sai lệch cộng dồn qua nhiều bước mà không có phản hồi",
   },
@@ -69,8 +72,13 @@ export function ProblemSection() {
           />
         </div>
 
-        <div className="space-y-6" data-motion-item>
-          <Subheading>Triệu chứng khi thiếu harness</Subheading>
+        <div className="space-y-4" data-motion-item>
+          <div className="max-w-prose space-y-2">
+            <Subheading>Triệu chứng khi thiếu harness</Subheading>
+            <p className="text-sm leading-relaxed text-body sm:text-base">
+              Ba dấu hiệu sớm khi agent chạy không có môi trường kiểm soát.
+            </p>
+          </div>
           <WarningCards items={symptoms} />
         </div>
 

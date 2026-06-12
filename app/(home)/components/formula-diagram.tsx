@@ -56,7 +56,7 @@ export function FormulaDiagram() {
       className="rounded-2xl border border-border bg-brand-surface/50 px-5 py-7 sm:px-8 sm:py-8"
       data-motion-item
     >
-      <p className="mb-6 text-pretty text-base leading-relaxed text-brand-primary/75 sm:mb-7 sm:text-lg">
+      <p className="mb-6 text-pretty text-base leading-relaxed text-body sm:mb-7 sm:text-lg">
         Một hệ thống AI đáng tin cậy không chỉ cần model mạnh — cần thêm lớp môi trường
         bao quanh:
       </p>

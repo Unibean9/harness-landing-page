@@ -20,7 +20,7 @@ export function HarnessLayersStack() {
       data-motion-item
     >
       <div className="space-y-5 lg:pt-1">
-        <p className="text-base leading-relaxed text-brand-primary/70 sm:text-lg">
+        <p className="text-base leading-relaxed text-body sm:text-lg">
           Sáu lớp này bọc quanh mô hình — từ ranh giới gần lõi đến vòng kiểm soát bên ngoài.
         </p>
         <p className="callout-accent rounded-r-xl py-4 pl-5 pr-4 font-display text-base leading-snug text-brand-primary">
@@ -41,7 +41,7 @@ export function HarnessLayersStack() {
                   <p className="font-display text-base font-bold text-brand-primary group-hover:text-primary sm:text-lg">
                     {layer.label}
                   </p>
-                  <p className="text-sm text-brand-primary/55">{layer.role}</p>
+                  <p className="text-sm text-body-muted">{layer.role}</p>
                 </div>
               </article>
             </li>

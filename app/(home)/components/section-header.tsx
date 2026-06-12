@@ -37,7 +37,7 @@ export function SectionHeader({
       {description && (
         <p
           className={cn(
-            "max-w-prose font-sans text-base leading-relaxed text-brand-primary/72 text-pretty",
+            "max-w-prose font-sans text-base leading-relaxed text-body text-pretty",
             dropCap && "drop-cap",
             centered && "mx-auto"
           )}

@@ -33,7 +33,7 @@ export function LinkRows({ items, className }: LinkRowsProps) {
             <p className="font-display text-base font-bold text-brand-primary group-hover:text-primary">
               {item.title}
             </p>
-            <p className="mt-0.5 text-sm leading-relaxed text-brand-primary/60">
+            <p className="mt-0.5 text-sm leading-relaxed text-body-muted">
               {item.description}
             </p>
           </div>

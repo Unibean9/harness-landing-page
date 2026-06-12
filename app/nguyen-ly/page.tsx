@@ -26,7 +26,7 @@ export default function NguyenLyPage() {
           <h1 className="font-display text-[clamp(2.5rem,5vw,4.5rem)] leading-none font-bold text-brand-primary tracking-tight">
             Nguyên lý thiết kế Harness.
           </h1>
-          <p className="mt-6 text-lg text-brand-primary/72 leading-relaxed">
+          <p className="mt-6 text-lg text-body leading-relaxed">
             Ưu tiên cách nghĩ hệ thống: môi trường làm việc quyết định hiệu suất của AI agent.
           </p>
         </div>

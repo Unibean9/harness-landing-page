@@ -3,7 +3,7 @@
 @layer base {
   :root {
     --brand-primary: #2d2926;
-    --brand-secondary: #8a7a70;
+    --brand-secondary: #6b5f56;
     --brand-tertiary: #b45309;
     --brand-neutral: #efe6d5;
     --brand-surface: #f5ede0;
@@ -170,5 +170,17 @@
 
   .step-row-active {
     @apply rounded-xl border-2 border-primary/45 bg-brand-accent-wash px-5 py-4;
+  }
+
+  .text-body {
+    @apply text-brand-primary/85;
+  }
+
+  .text-body-muted {
+    @apply text-brand-primary/78;
+  }
+
+  .text-caption {
+    @apply text-brand-primary/72;
   }
 }

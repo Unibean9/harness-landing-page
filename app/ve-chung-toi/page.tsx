@@ -22,7 +22,7 @@ export default function VeChungToiPage() {
               Xây dựng thư viện tri thức đáng tin cậy.
             </h1>
           </div>
-          <div className="space-y-6 text-lg leading-relaxed text-brand-primary/72">
+          <div className="space-y-6 text-lg leading-relaxed text-body">
             <p>
               Learn Harness Engineering là một trang học liệu mở cho kỹ sư phần mềm Việt Nam muốn làm chủ các trợ lý AI
               nhũ Claude Code và Codex, tối ưu hóa ngân sách ngữ cảnh và xây dựng luồng tự động hóa tin cậy.
@@ -51,7 +51,7 @@ export default function VeChungToiPage() {
                 <div key={item.text} className="rounded-[16px] border border-border bg-brand-surface p-4 shadow-sm">
                   <item.icon className="size-5 text-brand-tertiary" strokeWidth={1.8} />
                   <p className="mt-4 text-sm font-bold leading-6 text-brand-primary">{item.text}</p>
-                  <p className="mt-2 text-xs text-brand-primary/60 leading-relaxed">{item.desc}</p>
+                  <p className="mt-2 text-xs text-body-muted leading-relaxed">{item.desc}</p>
                 </div>
               ))}
             </div>

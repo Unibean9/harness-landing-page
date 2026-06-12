@@ -57,7 +57,7 @@ export function CoreComponentsSection() {
                 }`}
               >
                 <h3 className="text-base font-bold text-brand-primary">{item.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-brand-primary/65">
+                <p className="mt-2 text-sm leading-relaxed text-body-muted">
                   {item.description}
                 </p>
               </article>
