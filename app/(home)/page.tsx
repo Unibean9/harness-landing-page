@@ -3,6 +3,7 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { HarnessMotion } from "@/components/harness-motion";
 import { buildPageMetadata } from "@/lib/seo/metadata";
+import { HomeJsonLd } from "@/lib/seo/home-json-ld";
 import { HeroSection } from "./components/hero-section";
 import { ProblemSection } from "./components/problem-section";
 import { DefinitionSection } from "./components/definition-section";
@@ -20,6 +21,7 @@ export const metadata: Metadata = buildPageMetadata({
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
+      <HomeJsonLd />
       <Header currentPath="/" />
       <HarnessMotion />
 

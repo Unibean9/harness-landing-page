@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildOgImageMetadata } from "@/lib/seo/og-image";
 import { SITE, getSiteUrl } from "@/lib/seo/site";
 
 interface BuildPageMetadataOptions {
@@ -21,6 +22,7 @@ export function buildPageMetadata({
   const normalizedPath = path.startsWith("/") ? path : `/${path}`;
   const url = `${getSiteUrl()}${normalizedPath === "/" ? "" : normalizedPath}`;
   const socialTitle = withBrandSuffix(title);
+  const ogImage = buildOgImageMetadata();
 
   return {
     title,
@@ -39,11 +41,13 @@ export function buildPageMetadata({
       siteName: SITE.name,
       locale: SITE.locale,
       type: "website",
+      images: ogImage.openGraph?.images,
     },
     twitter: {
       card: "summary_large_image",
       title: socialTitle,
       description,
+      images: ogImage.twitter?.images,
     },
   };
 }

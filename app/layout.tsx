@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Libre_Caslon_Display } from "next/font/google";
 import Providers from "@/lib/providers";
+import { buildOgImageMetadata } from "@/lib/seo/og-image";
 import { RootJsonLd } from "@/lib/seo/root-json-ld";
 import { SITE, getSiteUrl } from "@/lib/seo/site";
 import "./globals.css";
@@ -16,6 +17,8 @@ const inter = Inter({
   subsets: ["latin", "vietnamese"],
 });
 
+const ogImage = buildOgImageMetadata();
+
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
   title: {
@@ -23,7 +26,14 @@ export const metadata: Metadata = {
     template: `%s | ${SITE.shortName}`,
   },
   description: SITE.defaultDescription,
-  keywords: ["harness", "kiến thức harness", "documentation", "học harness", "an toàn"],
+  keywords: [
+    "Harness Engineering",
+    "AI Coding Agent",
+    "prompt engineering",
+    "context engineering",
+    "guardrails",
+    "harness",
+  ],
   openGraph: {
     title: SITE.name,
     description: SITE.defaultDescription,
@@ -31,11 +41,13 @@ export const metadata: Metadata = {
     locale: SITE.locale,
     siteName: SITE.name,
     url: getSiteUrl(),
+    images: ogImage.openGraph?.images,
   },
   twitter: {
     card: "summary_large_image",
     title: SITE.name,
     description: SITE.defaultDescription,
+    images: ogImage.twitter?.images,
   },
   alternates: {
     canonical: "/",
