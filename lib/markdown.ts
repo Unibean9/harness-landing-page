@@ -129,7 +129,7 @@ export function markdownToHtml(markdown: string): string {
     result = result.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (match, text, url) => {
       if (url.includes("/lectures/")) {
         const item = url.split("/lectures/")[1].replace(/\/$/, "");
-        return `<a href="/khai-niem?tab=lectures&item=${item}" class="text-brand-tertiary hover:underline transition">${text}</a>`;
+        return `<a href="/docs?tab=lectures&item=${item}" class="text-brand-tertiary hover:underline transition">${text}</a>`;
       }
       if (url.includes("/projects/")) {
         const parts = url.split("/projects/");
@@ -143,7 +143,7 @@ export function markdownToHtml(markdown: string): string {
       }
       if (url.endsWith(".md") && !url.startsWith("http")) {
         const cleanItem = url.replace(/\.md$/, "");
-        return `<a href="/khai-niem?tab=lectures&item=${cleanItem}" class="text-brand-tertiary hover:underline transition">${text}</a>`;
+        return `<a href="/docs?tab=lectures&item=${cleanItem}" class="text-brand-tertiary hover:underline transition">${text}</a>`;
       }
       return `<a href="${url}" class="text-brand-tertiary hover:underline transition">${text}</a>`;
     });

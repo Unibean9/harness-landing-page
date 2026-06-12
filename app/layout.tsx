@@ -11,11 +11,15 @@ const libreCaslon = Libre_Caslon_Display({
   variable: "--font-libre-caslon",
   subsets: ["latin", "latin-ext"],
   weight: "400",
+  display: "swap",
+  adjustFontFallback: true,
 });
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin", "vietnamese"],
+  display: "swap",
+  adjustFontFallback: true,
 });
 
 const ogImage = buildOgImageMetadata();
@@ -67,6 +71,7 @@ export default function RootLayout({
   return (
     <html
       lang="vi"
+      data-scroll-behavior="smooth"
       className={`${libreCaslon.variable} ${inter.variable} h-full antialiased`}
       suppressHydrationWarning
     >

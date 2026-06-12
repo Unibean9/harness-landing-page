@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useMemo, useRef } from "react";
 import Link from "next/link";
-import { useRouter, useSearchParams, usePathname } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import {
   Search,
   X,
@@ -15,23 +15,62 @@ import { Header } from "@/components/layout/header";
 interface DocViewerProps {
   initialTabs: DocTab[];
   defaultTabId?: string;
+  initialTabId?: string;
+  initialItemId?: string;
 }
 
-export function DocViewer({ initialTabs, defaultTabId }: DocViewerProps) {
+function buildDefaultItemIds(tabs: DocTab[]) {
+  const initial: Record<string, string> = {};
+  tabs.forEach((tab) => {
+    if (tab.items.length > 0) {
+      initial[tab.id] = tab.items[0].id;
+    }
+  });
+  return initial;
+}
+
+export function DocViewer({
+  initialTabs,
+  defaultTabId,
+  initialTabId,
+  initialItemId,
+}: DocViewerProps) {
   const router = useRouter();
   const pathname = usePathname();
-  const searchParams = useSearchParams();
 
-  const activeTabId = searchParams.get("tab") || defaultTabId || "lectures";
+  const resolvedTabId = initialTabId || defaultTabId || "lectures";
+
+  const [activeTabId, setActiveTabId] = useState(resolvedTabId);
   const [activeItemIds, setActiveItemIds] = useState<Record<string, string>>(() => {
-    const initial: Record<string, string> = {};
-    initialTabs.forEach((tab) => {
-      if (tab.items.length > 0) {
-        initial[tab.id] = tab.items[0].id;
-      }
-    });
+    const initial = buildDefaultItemIds(initialTabs);
+    if (initialItemId) {
+      initial[resolvedTabId] = initialItemId;
+    }
     return initial;
   });
+
+  useEffect(() => {
+    const tab = initialTabId || defaultTabId || "lectures";
+    setActiveTabId(tab);
+    if (initialItemId) {
+      setActiveItemIds((prev) => ({ ...prev, [tab]: initialItemId }));
+    }
+  }, [initialTabId, initialItemId, defaultTabId]);
+
+  useEffect(() => {
+    const syncFromUrl = () => {
+      const params = new URLSearchParams(window.location.search);
+      const tab = params.get("tab");
+      const item = params.get("item");
+      if (tab) setActiveTabId(tab);
+      if (item && tab) {
+        setActiveItemIds((prev) => ({ ...prev, [tab]: item }));
+      }
+    };
+
+    window.addEventListener("popstate", syncFromUrl);
+    return () => window.removeEventListener("popstate", syncFromUrl);
+  }, []);
 
   const [searchQuery, setSearchQuery] = useState("");
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -71,8 +110,7 @@ export function DocViewer({ initialTabs, defaultTabId }: DocViewerProps) {
     return initialTabs.find((t) => t.id === activeTabId) || initialTabs[0];
   }, [initialTabs, activeTabId]);
 
-  // Get active item id for active tab
-  const activeItemId = searchParams.get("item") || activeItemIds[activeTabId] || activeTab.items[0]?.id;
+  const activeItemId = activeItemIds[activeTabId] || activeTab.items[0]?.id;
 
   // Find active item data
   const activeItem = useMemo(() => {
@@ -200,12 +238,13 @@ export function DocViewer({ initialTabs, defaultTabId }: DocViewerProps) {
   }, [initialTabs, searchQuery]);
 
   const selectItem = (tabId: string, itemId: string) => {
-    const params = new URLSearchParams(searchParams.toString());
+    const params = new URLSearchParams();
     params.set("tab", tabId);
     params.set("item", itemId);
-    router.push(`${pathname}?${params.toString()}`, { scroll: false });
 
+    setActiveTabId(tabId);
     setActiveItemIds((prev) => ({ ...prev, [tabId]: itemId }));
+    router.push(`${pathname}?${params.toString()}`, { scroll: false });
     setIsMobileSidebarOpen(false);
     
     // Scroll content to top

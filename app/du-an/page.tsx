@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
 import { getAllDocs } from "@/lib/docs";
 import { DocViewer } from "@/components/doc-viewer";
 import { buildPageMetadata } from "@/lib/seo/metadata";
@@ -10,11 +9,20 @@ export const metadata: Metadata = buildPageMetadata({
   path: "/du-an",
 });
 
-export default function DuAnPage() {
-  const docs = getAllDocs().filter(tab => tab.id === "projects");
+interface DuAnPageProps {
+  searchParams: Promise<{ tab?: string; item?: string }>;
+}
+
+export default async function DuAnPage({ searchParams }: DuAnPageProps) {
+  const { tab, item } = await searchParams;
+  const docs = getAllDocs().filter((subject) => subject.id === "projects");
+
   return (
-    <Suspense fallback={<div className="min-h-screen bg-background text-foreground flex items-center justify-center">Đang tải tài liệu...</div>}>
-      <DocViewer initialTabs={docs} defaultTabId="projects" />
-    </Suspense>
+    <DocViewer
+      initialTabs={docs}
+      defaultTabId="projects"
+      initialTabId={tab}
+      initialItemId={item}
+    />
   );
 }

@@ -1,8 +1,7 @@
-import { getSiteUrlFromRequest } from "@/lib/seo/request-site-url";
-import { SITE } from "@/lib/seo/site";
+import { SITE, getSiteUrl } from "@/lib/seo/site";
 
-export async function RootJsonLd() {
-  const siteUrl = await getSiteUrlFromRequest();
+export function RootJsonLd() {
+  const siteUrl = getSiteUrl();
 
   const payload = {
     "@context": "https://schema.org",

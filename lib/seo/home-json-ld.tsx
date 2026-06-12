@@ -1,9 +1,8 @@
-import { getSiteUrlFromRequest } from "@/lib/seo/request-site-url";
-import { SITE } from "@/lib/seo/site";
+import { SITE, getSiteUrl } from "@/lib/seo/site";
 import { HARNESS_ENGINEERING_DEFINITION, HOME_FAQ_ITEMS } from "@/lib/seo/home-aeo";
 
-export async function HomeJsonLd() {
-  const siteUrl = await getSiteUrlFromRequest();
+export function HomeJsonLd() {
+  const siteUrl = getSiteUrl();
   const pageUrl = siteUrl;
   const imageUrl = `${siteUrl}${SITE.ogImage.path}`;
 

@@ -7,27 +7,20 @@ import { LinkRows } from "./link-rows";
 const links = [
   {
     step: "01",
-    title: "Khái niệm",
-    href: "/khai-niem",
-    description:
-      "Hiểu rõ Harness Engineering là gì và vì sao nó không chỉ là prompt hay automation.",
-  },
-  {
-    step: "02",
     title: "Nguyên lý",
-    href: "/nguyen-ly",
+    href: "/nguyen-ly/harness-first",
     description:
       "Tìm hiểu các thành phần cốt lõi như ràng buộc, guardrails, feedback loop và quản lý trạng thái.",
   },
   {
-    step: "03",
+    step: "02",
     title: "Dự án",
     href: "/du-an",
     description:
       "Xem cách Harness Engineering được áp dụng vào coding agent, chatbot nội bộ và workflow automation.",
   },
   {
-    step: "04",
+    step: "03",
     title: "Tài nguyên",
     href: "/tai-nguyen",
     description:
@@ -52,7 +45,7 @@ export function FinalCtaSection() {
                 <span className="text-primary">Harness Engineering</span>
               </>
             }
-            description="Lộ trình học từ khái niệm nền tảng đến thực hành và tài liệu tham khảo."
+            description="Lộ trình học từ nguyên lý nền tảng đến thực hành và tài liệu tham khảo."
           />
         </div>
 
@@ -62,14 +55,14 @@ export function FinalCtaSection() {
         </div>
 
         <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center" data-motion-item>
-          <Link href="/khai-niem" className="btn-primary">
-            Bắt đầu với Khái niệm
+          <Link href="/nguyen-ly/harness-first" className="btn-primary">
+            Bắt đầu với Nguyên lý
           </Link>
           <Link
-            href="/nguyen-ly"
+            href="/du-an"
             className="text-sm font-semibold text-primary transition hover:underline"
           >
-            Hoặc xem Nguyên lý →
+            Hoặc xem Dự án →
           </Link>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils/cn";
 
 interface FlowStep {
+  id?: string;
   index: string;
   title: string;
   description: string;
@@ -11,9 +12,10 @@ interface FlowStep {
 interface FlowStepsProps {
   steps: FlowStep[];
   className?: string;
+  fixLabel?: string;
 }
 
-export function FlowSteps({ steps, className }: FlowStepsProps) {
+export function FlowSteps({ steps, className, fixLabel = "Harness → " }: FlowStepsProps) {
   return (
     <ol className={cn("space-y-0", className)}>
       {steps.map((step, index) => (
@@ -35,8 +37,9 @@ export function FlowSteps({ steps, className }: FlowStepsProps) {
             {step.index}
           </span>
           <article
+            id={step.id}
             className={cn(
-              "flex-1 rounded-xl border px-5 py-4",
+              "scroll-mt-28 flex-1 rounded-xl border px-5 py-4",
               step.highlight
                 ? "border-primary/40 bg-brand-accent-wash"
                 : "border-border bg-background/70"
@@ -48,7 +51,7 @@ export function FlowSteps({ steps, className }: FlowStepsProps) {
             </p>
             {step.fix && (
               <p className="mt-3 border-t border-border/60 pt-3 text-base leading-relaxed text-body">
-                <span className="font-semibold text-brand-emphasis">Harness → </span>
+                <span className="font-semibold text-brand-emphasis">{fixLabel}</span>
                 {step.fix}
               </p>
             )}

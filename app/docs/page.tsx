@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
 import { getAllDocs } from "@/lib/docs";
 import { DocViewer } from "@/components/doc-viewer";
 import { buildPageMetadata } from "@/lib/seo/metadata";
@@ -11,11 +10,13 @@ export const metadata: Metadata = buildPageMetadata({
   path: "/docs",
 });
 
-export default function DocsPage() {
+interface DocsPageProps {
+  searchParams: Promise<{ tab?: string; item?: string }>;
+}
+
+export default async function DocsPage({ searchParams }: DocsPageProps) {
+  const { tab, item } = await searchParams;
   const docs = getAllDocs();
-  return (
-    <Suspense fallback={<div className="min-h-screen bg-background text-foreground flex items-center justify-center">Đang tải tài liệu...</div>}>
-      <DocViewer initialTabs={docs} />
-    </Suspense>
-  );
+
+  return <DocViewer initialTabs={docs} initialTabId={tab} initialItemId={item} />;
 }
