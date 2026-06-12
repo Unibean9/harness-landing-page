@@ -11,40 +11,76 @@ export function HarnessMotion() {
     const context = gsap.context(() => {
       const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+      const scaleFadeItems = gsap.utils.toArray<HTMLElement>("[data-scale-fade]");
+
       if (reduceMotion) {
-        gsap.set("[data-reveal], [data-scale-fade]", { opacity: 1, y: 0, scale: 1 });
+        gsap.set("[data-hero-item], [data-motion-item]", {
+          opacity: 1,
+          y: 0,
+        });
+        if (scaleFadeItems.length) {
+          gsap.set(scaleFadeItems, { opacity: 1, scale: 1 });
+        }
         return;
       }
 
-      gsap.fromTo(
-        "[data-reveal]",
-        { opacity: 0, y: 28 },
-        {
+      gsap.set("[data-hero-item], [data-motion-item]", { opacity: 0, y: 22 });
+      if (scaleFadeItems.length) {
+        gsap.set(scaleFadeItems, { opacity: 0, scale: 0.94 });
+      }
+
+      gsap.to("[data-hero-item]", {
+        opacity: 1,
+        y: 0,
+        duration: 0.85,
+        ease: "power3.out",
+        stagger: 0.1,
+        delay: 0.12,
+      });
+
+      if (scaleFadeItems.length) {
+        gsap.to(scaleFadeItems, {
+          opacity: 1,
+          scale: 1,
+          duration: 1.1,
+          ease: "power3.out",
+          delay: 0.35,
+        });
+      }
+
+      gsap.utils.toArray<HTMLElement>("[data-motion-section]").forEach((section) => {
+        const items = section.querySelectorAll<HTMLElement>("[data-motion-item]");
+        if (!items.length) return;
+
+        gsap.to(items, {
           opacity: 1,
           y: 0,
-          duration: 0.9,
+          duration: 0.75,
           ease: "power3.out",
-          stagger: 0.08,
+          stagger: 0.09,
           scrollTrigger: {
-            trigger: "[data-reveal]",
-            start: "top 70%",
+            trigger: section,
+            start: "top 80%",
+            once: true,
           },
-        }
-      );
+        });
+      });
 
-      gsap.utils.toArray<HTMLElement>("[data-scale-fade]").forEach((item) => {
+      scaleFadeItems.forEach((item) => {
+        if (item.closest("#trang-chu")) return;
+
         gsap.fromTo(
           item,
-          { opacity: 0.28, scale: 0.92 },
+          { opacity: 0.3, scale: 0.94 },
           {
             opacity: 1,
             scale: 1,
             ease: "none",
             scrollTrigger: {
               trigger: item,
-              start: "top 82%",
-              end: "bottom 44%",
-              scrub: true,
+              start: "top 85%",
+              end: "bottom 50%",
+              scrub: 0.6,
             },
           }
         );

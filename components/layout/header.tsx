@@ -26,7 +26,7 @@ export function Header({ showSidebarToggle, isSidebarOpen, onToggleSidebar }: He
 
   return (
     <header className="fixed left-0 right-0 top-4 z-50 px-4">
-      <nav className="mx-auto flex h-16 max-w-[1400px] items-center justify-between rounded-[20px] border border-border bg-brand-surface/92 px-4 shadow-[0_18px_60px_rgb(31_20_16/0.08)] backdrop-blur md:px-6">
+      <nav className="mx-auto flex h-16 max-w-[1400px] items-center justify-between rounded-[20px] border border-border bg-brand-surface/92 px-4 shadow-[0_18px_60px_rgb(45_41_38/0.06)] backdrop-blur md:px-6">
         
         {/* Logo & Mobile Menu Toggle */}
         <div className="flex items-center gap-3">
@@ -63,10 +63,10 @@ export function Header({ showSidebarToggle, isSidebarOpen, onToggleSidebar }: He
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`px-3 py-1.5 text-sm font-semibold rounded-md transition ${
+                  className={`px-3 py-1.5 text-sm font-semibold rounded-full transition ${
                     isActive
-                      ? "text-primary bg-brand-neutral/40"
-                      : "text-brand-primary/70 hover:text-brand-primary hover:bg-brand-neutral/20"
+                      ? "border border-primary/35 text-primary bg-brand-accent-wash"
+                      : "text-brand-primary/70 hover:text-brand-primary hover:bg-brand-neutral/30"
                   }`}
                 >
                   {item.label}
