@@ -1159,6 +1159,71 @@
     font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   }
 
+  .p2-signs-matrix {
+    @apply mt-6 overflow-hidden rounded-xl border border-border/70 bg-background/85;
+  }
+
+  .p2-signs-matrix-head {
+    @apply hidden gap-3 border-b border-border/60 bg-brand-surface/45 px-5 py-3.5 sm:grid sm:grid-cols-[2.5rem_minmax(0,1fr)_2.5rem_minmax(0,1fr)] sm:items-center;
+  }
+
+  .p2-signs-matrix-head span:nth-child(2) {
+    @apply text-xs font-semibold uppercase tracking-[0.08em] text-brand-primary/52;
+    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  }
+
+  .p2-signs-matrix-head span:nth-child(4) {
+    @apply text-xs font-semibold uppercase tracking-[0.08em] text-primary/80;
+    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  }
+
+  .p2-signs-matrix-body {
+    list-style: none;
+    padding: 0;
+  }
+
+  .p2-signs-matrix-row {
+    @apply grid gap-3 border-b border-border/45 px-4 py-4 transition duration-200 last:border-b-0 hover:bg-brand-accent-wash/14 sm:grid-cols-[2.5rem_minmax(0,1fr)] sm:items-center sm:gap-4 sm:px-5 sm:py-3.5;
+  }
+
+  .p2-signs-matrix-index {
+    @apply font-mono text-[0.6875rem] font-semibold tabular-nums text-brand-primary/32;
+  }
+
+  .p2-signs-matrix-pair {
+    @apply grid gap-2 sm:grid-cols-[minmax(0,1fr)_2.5rem_minmax(0,1fr)] sm:items-center sm:gap-3;
+  }
+
+  .p2-signs-matrix-cell {
+    @apply m-0 flex flex-col gap-1 rounded-lg border px-3.5 py-3 text-sm leading-snug;
+    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+    text-wrap: pretty;
+  }
+
+  .p2-signs-matrix-cell--low {
+    @apply border-border/60 bg-background/70 text-brand-primary/72;
+  }
+
+  .p2-signs-matrix-cell--empty {
+    @apply border-dashed border-border/45 bg-transparent text-brand-primary/28;
+  }
+
+  .p2-signs-matrix-cell--high {
+    @apply border-primary/22 bg-brand-accent-wash/35 font-medium text-brand-primary;
+  }
+
+  .p2-signs-matrix-mobile-label {
+    @apply font-mono text-[0.625rem] font-semibold uppercase tracking-[0.1em] text-brand-primary/42 sm:hidden;
+  }
+
+  .p2-signs-matrix-cell--high .p2-signs-matrix-mobile-label {
+    @apply text-primary/62;
+  }
+
+  .p2-signs-matrix-bridge {
+    @apply hidden text-center font-mono text-sm text-brand-primary/28 sm:block;
+  }
+
   /* ── Principle 03 channel diagram & flow compare ── */
 
   .p3-channel-row {
@@ -2650,6 +2715,340 @@
     @apply mt-1.5 text-sm leading-relaxed text-brand-primary/76;
     font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
     text-wrap: pretty;
+  }
+
+  /* Principle 01 — Harness components grid */
+  .p1-component-grid {
+    @apply mt-6 grid grid-cols-1 gap-2 sm:grid-cols-2;
+  }
+
+  .p1-component-row {
+    @apply flex items-start gap-3 rounded-lg border border-secondary/15 bg-background/60 px-4 py-3;
+  }
+
+  .p1-component-label {
+    @apply flex-1 font-semibold text-brand-primary text-sm;
+  }
+
+  .p1-component-role {
+    @apply text-sm text-brand-primary/60;
+  }
+
+  /* Principle 01 — Lifecycle flow strip */
+  .p1-lifecycle-strip {
+    @apply mt-6 flex flex-wrap gap-3;
+  }
+
+  .p1-lifecycle-step {
+    @apply flex flex-col items-start gap-1 rounded-lg border border-secondary/15 bg-background/60 px-4 py-3 text-sm;
+  }
+
+  .p1-lifecycle-step .p1-benefit-index {
+    @apply mb-1;
+  }
+
+  /* Principle 02 — Building blocks stack */
+  .p2-block-stack {
+    @apply mt-6 flex flex-col gap-4;
+  }
+
+  .p2-block-item {
+    @apply flex items-start gap-4 rounded-lg border border-secondary/15 bg-background/60 px-4 py-4;
+  }
+
+  .p2-block-index {
+    @apply shrink-0 font-mono text-sm font-semibold text-primary;
+  }
+
+  .p2-block-label {
+    @apply font-semibold text-brand-primary text-sm;
+  }
+
+  .p2-block-desc {
+    @apply mt-1 text-sm leading-relaxed text-brand-primary/70;
+    text-wrap: pretty;
+  }
+
+  /* Principle 05 — Guide & Sensor type grids */
+  .p5-types-grid {
+    @apply mt-4 grid gap-2 sm:grid-cols-2;
+  }
+
+  .p5-type-row {
+    @apply flex items-baseline justify-between gap-3 rounded-lg border border-border/60 bg-background/80 px-3 py-2.5;
+  }
+
+  .p5-type-label {
+    @apply font-mono text-xs font-semibold text-brand-primary;
+  }
+
+  .p5-type-role {
+    @apply shrink-0 text-xs text-brand-primary/52;
+    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  }
+
+  /* Principle 13 — Error mapping table */
+  .p13-mapping-table {
+    @apply mt-4 space-y-2;
+  }
+
+  .p13-mapping-row {
+    @apply grid min-w-0 items-center gap-2 rounded-lg border border-border/60 bg-background/80 px-3 py-2.5 sm:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] sm:gap-3;
+  }
+
+  .p13-mapping-error {
+    @apply text-sm text-brand-primary/82;
+    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+    text-wrap: pretty;
+  }
+
+  .p13-mapping-arrow {
+    @apply hidden font-mono text-sm text-brand-primary/35 sm:block;
+  }
+
+  .p13-mapping-fix {
+    @apply font-mono text-xs font-semibold text-primary;
+  }
+
+  /* Shared — principle bookends (intro & summary) */
+  .p-bookend--intro-editorial {
+    @apply mt-2 mb-2 grid gap-5 sm:grid-cols-[3.75rem_minmax(0,1fr)] sm:gap-6;
+  }
+
+  .p-bookend--intro-question,
+  .p-bookend--intro-definition,
+  .p-bookend--intro-prose {
+    @apply mt-2 mb-2 max-w-prose;
+  }
+
+  .p-bookend-rail {
+    @apply flex items-start pt-1;
+  }
+
+  .p-bookend-index {
+    @apply font-mono text-[2rem] font-semibold leading-none tabular-nums text-brand-primary/14 sm:text-[2.25rem];
+  }
+
+  .p-bookend-body {
+    @apply border-l-2 border-primary/22 pl-5 sm:pl-6;
+  }
+
+  .p-bookend-label {
+    @apply text-[0.8125rem] font-medium italic text-brand-primary/52;
+    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  }
+
+  .p-bookend-lead {
+    @apply mt-2 max-w-prose text-[0.9375rem] leading-[1.72] text-brand-primary/88 sm:text-base;
+    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+    text-wrap: pretty;
+  }
+
+  .p-bookend-aside {
+    @apply mt-4 max-w-prose border-0 p-0;
+  }
+
+  .p-bookend-aside p {
+    @apply text-[0.9375rem] font-medium leading-[1.65] text-brand-primary;
+    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+    text-wrap: pretty;
+  }
+
+  .p-bookend-aside p::before {
+    content: open-quote;
+    @apply mr-0.5 text-primary/55;
+  }
+
+  .p-bookend-aside p::after {
+    content: close-quote;
+    @apply ml-0.5 text-primary/55;
+  }
+
+  .p-bookend-equation {
+    @apply mt-5 grid max-w-md grid-cols-2 gap-2.5;
+  }
+
+  .p-bookend-equation-side {
+    @apply rounded-md border border-border/55 bg-background/80 px-3.5 py-3 transition duration-200 hover:border-primary/22 hover:bg-brand-accent-wash/25;
+  }
+
+  .p-bookend-equation-term {
+    @apply font-mono text-sm font-semibold text-primary;
+  }
+
+  .p-bookend-equation-def {
+    @apply mt-1 text-xs leading-snug text-brand-primary/58;
+    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  }
+
+  /* Intro — question variant */
+  .p-bookend-question-stack {
+    @apply mt-4 space-y-2;
+  }
+
+  .p-bookend-question {
+    @apply rounded-lg border px-4 py-3.5;
+  }
+
+  .p-bookend-question--wrong {
+    @apply border-border/65 bg-background/75;
+  }
+
+  .p-bookend-question--right {
+    @apply border-primary/24 bg-brand-accent-wash/38;
+  }
+
+  .p-bookend-question-label {
+    @apply font-mono text-[0.625rem] font-semibold uppercase tracking-[0.1em] text-brand-primary/48;
+  }
+
+  .p-bookend-question--right .p-bookend-question-label {
+    @apply text-primary/68;
+  }
+
+  .p-bookend-question-text {
+    @apply mt-1.5 text-sm font-medium leading-snug text-brand-primary;
+    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+    text-wrap: pretty;
+  }
+
+  .p-bookend-question-bridge {
+    @apply block text-center font-mono text-sm text-brand-primary/32;
+  }
+
+  .p-bookend-lead--answer {
+    @apply mt-5;
+  }
+
+  /* Intro — definition variant */
+  .p-bookend-definition {
+    @apply mt-4 grid gap-3 rounded-lg border border-border/60 bg-background/70 p-4 sm:grid-cols-[minmax(0,10rem)_minmax(0,1fr)] sm:items-start sm:gap-5 sm:p-5;
+  }
+
+  .p-bookend-definition-term {
+    @apply font-mono text-sm font-semibold leading-snug text-primary;
+  }
+
+  .p-bookend-definition-body {
+    @apply text-[0.9375rem] leading-[1.72] text-brand-primary/86 sm:text-base;
+    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+    text-wrap: pretty;
+  }
+
+  /* Intro — prose variant + shared note line */
+  .p-bookend-prose-lead {
+    @apply mt-3 text-[0.9375rem] leading-[1.72] text-brand-primary/88 sm:text-base;
+    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+    text-wrap: pretty;
+  }
+
+  .p-bookend-prose-note {
+    @apply mt-4 text-sm font-medium leading-relaxed text-brand-primary/62;
+    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+    text-wrap: pretty;
+  }
+
+  .p-bookend--intro-definition .p-bookend-prose-note,
+  .p-bookend--intro-question .p-bookend-prose-note {
+    @apply mt-4 border-t border-border/50 pt-4;
+  }
+
+  .p-bookend--summary {
+    @apply relative mt-5 overflow-hidden rounded-xl border border-primary/18 bg-brand-accent-wash/28 px-5 py-6 sm:px-7 sm:py-7;
+  }
+
+  .p-bookend-summary-watermark {
+    @apply pointer-events-none absolute -right-2 -top-4 font-mono text-[5.5rem] font-bold leading-none tabular-nums text-primary/7 select-none sm:text-[6.5rem];
+  }
+
+  .p-bookend-summary-inner {
+    @apply relative;
+  }
+
+  .p-bookend-summary-headline {
+    @apply max-w-prose font-display text-[clamp(1.0625rem,2vw,1.25rem)] font-normal leading-snug tracking-[-0.015em] text-brand-primary;
+    text-wrap: balance;
+  }
+
+  .p-bookend-summary-steps {
+    @apply mt-5 divide-y divide-primary/12 border-t border-primary/12;
+    list-style: none;
+    padding: 0;
+  }
+
+  .p-bookend-summary-step {
+    @apply flex items-start gap-3 py-3 text-sm leading-relaxed text-brand-primary/78 first:pt-4;
+    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+    text-wrap: pretty;
+  }
+
+  .p-bookend-step-index {
+    @apply shrink-0 font-mono text-[0.6875rem] font-semibold tabular-nums text-primary/55;
+  }
+
+  /* Legacy — intro & summary (principles not yet migrated) */
+  .p-intro-callout {
+    @apply mt-2 mb-8 rounded-xl border border-primary/15 bg-primary/5 px-5 py-5;
+  }
+
+  .p-intro-eyebrow {
+    @apply mb-3 font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-primary;
+  }
+
+  .p-intro-body {
+    @apply text-sm leading-relaxed text-brand-primary/80;
+    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+    text-wrap: pretty;
+  }
+
+  .p-intro-note {
+    @apply mt-3 rounded-lg bg-primary/8 px-4 py-3 text-sm font-medium leading-relaxed text-brand-primary;
+    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+    text-wrap: pretty;
+    border-left: 2px solid color-mix(in oklch, var(--color-primary) 40%, transparent);
+  }
+
+  /* Shared — conceptual equation (e.g., Model = X / Harness = Y) */
+  .p-equation {
+    @apply mt-4 grid grid-cols-2 gap-3;
+  }
+
+  .p-equation-side {
+    @apply rounded-lg border border-secondary/12 bg-background/70 px-4 py-3;
+  }
+
+  .p-equation-term {
+    @apply font-mono text-sm font-bold text-primary;
+  }
+
+  .p-equation-def {
+    @apply mt-1 text-xs leading-snug text-brand-primary/60;
+    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  }
+
+  /* Shared — "Tóm tắt" summary box */
+  .p-summary-box {
+    @apply rounded-xl border border-primary/20 bg-primary/6 px-6 py-5;
+  }
+
+  .p-summary-tag {
+    @apply font-mono text-sm font-semibold text-primary leading-snug;
+  }
+
+  .p-summary-list {
+    @apply mt-4 space-y-2;
+    list-style: none;
+    padding: 0;
+  }
+
+  .p-summary-list li {
+    @apply flex gap-2 text-sm leading-relaxed text-brand-primary/72;
+    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  }
+
+  .p-summary-list li::before {
+    content: "→";
+    @apply shrink-0 font-mono font-bold text-primary;
   }
 
 }

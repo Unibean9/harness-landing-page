@@ -2,11 +2,17 @@ import {
   principle02AgentConsequences,
   principle02AntiPatterns,
   principle02Benefits,
+  principle02BuildingBlocks,
+  principle02Intro,
   principle02PracticeChecks,
+  principle02SignRows,
+  principle02Summary,
   principle02SystemProblems,
   principle02Traits,
 } from "@/lib/principles/principle-02-content";
 import { Principle02Diagram } from "./principle-02-diagram";
+import { PrincipleIntro } from "./principle-intro";
+import { PrincipleSummary } from "./principle-summary";
 
 export function Principle02Article() {
   return (
@@ -20,6 +26,16 @@ export function Principle02Article() {
           Hệ thống phải được thiết kế để Agent có thể hiểu và được Harness kiểm soát.
         </p>
       </header>
+
+      <section id="p2-intro" className="p1-section scroll-mt-28">
+        <PrincipleIntro
+          principleNumber={2}
+          variant="definition"
+          term="Harnessability"
+          simple={principle02Intro.simple}
+          note={principle02Intro.note}
+        />
+      </section>
 
       <section id="p2-diagram" className="p1-section scroll-mt-28">
         <Principle02Diagram />
@@ -124,6 +140,79 @@ export function Principle02Article() {
             </li>
           ))}
         </ul>
+      </section>
+
+      <section id="p2-building-blocks" className="p1-section scroll-mt-28">
+        <h2 className="p1-section-title">Sáu thành phần tạo nên Harnessability</h2>
+        <p className="p1-section-lead">
+          Một hệ thống có Harnessability cao phải có đủ sáu yếu tố sau:
+        </p>
+
+        <ul className="p2-block-stack">
+          {principle02BuildingBlocks.map((item) => (
+            <li key={item.index} className="p2-block-item">
+              <span className="p2-block-index">{item.index}</span>
+              <div>
+                <p className="p2-block-label">{item.label}</p>
+                <p className="p2-block-desc">{item.description}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section id="p2-signs" className="p1-section scroll-mt-28">
+        <h2 className="p1-section-title">Dấu hiệu nhận biết</h2>
+        <p className="p1-section-lead">
+          Mỗi hàng là một chiều kiểm tra — bên trái là triệu chứng thấp, bên phải là tín hiệu tốt
+          tương ứng.
+        </p>
+
+        <div className="p2-signs-matrix">
+          <div className="p2-signs-matrix-head" aria-hidden="true">
+            <span className="p2-signs-matrix-head-index" />
+            <span>Harnessability thấp</span>
+            <span className="p2-signs-matrix-head-bridge" />
+            <span>Harnessability cao</span>
+          </div>
+
+          <ul className="p2-signs-matrix-body">
+            {principle02SignRows.map((row, index) => (
+              <li key={row.high} className="p2-signs-matrix-row">
+                <span className="p2-signs-matrix-index" aria-hidden="true">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+
+                <div className="p2-signs-matrix-pair">
+                  <p
+                    className={`p2-signs-matrix-cell p2-signs-matrix-cell--low${row.low ? "" : " p2-signs-matrix-cell--empty"}`}
+                  >
+                    <span className="p2-signs-matrix-mobile-label">Thấp</span>
+                    <span>{row.low ?? "—"}</span>
+                  </p>
+
+                  <span className="p2-signs-matrix-bridge" aria-hidden="true">
+                    →
+                  </span>
+
+                  <p className="p2-signs-matrix-cell p2-signs-matrix-cell--high">
+                    <span className="p2-signs-matrix-mobile-label">Cao</span>
+                    <span>{row.high}</span>
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section id="p2-summary" className="p1-section scroll-mt-28">
+        <h2 className="p1-section-title">Tóm tắt</h2>
+        <PrincipleSummary
+          principleNumber={2}
+          headline={principle02Summary.headline}
+          points={principle02Summary.points}
+        />
       </section>
     </article>
   );

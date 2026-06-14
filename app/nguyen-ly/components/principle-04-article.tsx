@@ -1,12 +1,20 @@
 import {
   principle04AntiPatterns,
   principle04Benefits,
-  principle04Capabilities,
+  principle04CapabilitiesExtended,
+  principle04ExecutionRecord,
+  principle04Intro,
+  principle04IntroQuestions,
   principle04PracticeChecks,
   principle04RightFocus,
+  principle04SignsCorrect,
+  principle04SignsWrong,
+  principle04Summary,
   principle04WrongFocus,
 } from "@/lib/principles/principle-04-content";
 import { Principle04Diagram } from "./principle-04-diagram";
+import { PrincipleIntro } from "./principle-intro";
+import { PrincipleSummary } from "./principle-summary";
 
 export function Principle04Article() {
   return (
@@ -20,6 +28,17 @@ export function Principle04Article() {
           Mọi hành vi của Agent phải có thể quan sát, giải thích và khôi phục khi cần thiết.
         </p>
       </header>
+
+      <section id="p4-intro" className="p1-section scroll-mt-28">
+        <PrincipleIntro
+          principleNumber={4}
+          variant="question"
+          simple={principle04Intro.simple}
+          note={principle04Intro.note}
+          questions={principle04IntroQuestions}
+          includeNote
+        />
+      </section>
 
       <section id="p4-diagram" className="p1-section scroll-mt-28">
         <Principle04Diagram />
@@ -70,12 +89,12 @@ export function Principle04Article() {
           Nếu không có những khả năng này, hệ thống rất khó vận hành ở quy mô lớn.
         </p>
 
-        <ul className="p2-trait-grid">
-          {principle04Capabilities.map((cap, index) => (
-            <li key={cap.label} className="p2-trait-card">
-              <span className="p1-benefit-index">{String(index + 1).padStart(2, "0")}</span>
-              <p className="p2-trait-label">{cap.label}</p>
-              <p className="p2-trait-hint">{cap.hint}</p>
+        <ul className="p4-capability-row">
+          {principle04CapabilitiesExtended.map((cap) => (
+            <li key={cap.label} className="p4-capability-pill">
+              <span className="p4-capability-index">{cap.index}</span>
+              <span className="p4-capability-label">{cap.label}</span>
+              <span className="p4-capability-hint">{cap.description}</span>
             </li>
           ))}
         </ul>
@@ -120,6 +139,65 @@ export function Principle04Article() {
             </li>
           ))}
         </ul>
+      </section>
+
+      <section id="p4-execution-record" className="p1-section scroll-mt-28">
+        <h2 className="p1-section-title">Controlled execution record</h2>
+        <p className="p1-section-lead">
+          Ở mức nâng cao, mỗi lần Agent chạy nên có một execution record đầy đủ:
+        </p>
+
+        <div className="p12-persist-log">
+          <div className="p12-persist-header">
+            <span className="p12-persist-title">execution_record.log</span>
+            <span className="p12-persist-status">controlled</span>
+          </div>
+          <ul className="p12-persist-lines">
+            {principle04ExecutionRecord.map((item) => (
+              <li key={item.key} className="p12-persist-line">
+                <span className="p12-persist-key">{item.key}</span>
+                <span className="p12-persist-value">{item.value}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section id="p4-signs" className="p1-section scroll-mt-28">
+        <h2 className="p1-section-title">Dấu hiệu nhận biết</h2>
+
+        <div className="p1-compare">
+          <div className="p1-compare-col p1-compare-col--reactive">
+            <p className="p1-compare-label">Chưa production-ready</p>
+            <ul className="p1-compare-list">
+              {principle04SignsWrong.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="p1-compare-divider p1-compare-divider--versus" aria-hidden="true">
+            <span>vs</span>
+          </div>
+
+          <div className="p1-compare-col p1-compare-col--root">
+            <p className="p1-compare-label">Production-ready</p>
+            <ul className="p1-compare-list">
+              {principle04SignsCorrect.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="p4-summary" className="p1-section scroll-mt-28">
+        <h2 className="p1-section-title">Tóm tắt</h2>
+        <PrincipleSummary
+          principleNumber={4}
+          headline={principle04Summary.headline}
+          points={principle04Summary.points}
+        />
       </section>
     </article>
   );

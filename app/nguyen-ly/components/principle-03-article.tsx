@@ -1,11 +1,20 @@
 import {
+  principle03AdapterShouldDo,
+  principle03AdapterShouldNot,
   principle03AntiPatterns,
   principle03Benefits,
   principle03ChannelSpecificLogic,
+  principle03EventSchema,
   principle03HarnessDuties,
+  principle03Intro,
+  principle03SignsCorrect,
+  principle03SignsWrong,
+  principle03Summary,
 } from "@/lib/principles/principle-03-content";
 import { Principle03Diagram } from "./principle-03-diagram";
 import { Principle03FlowCompare } from "./principle-03-flow-compare";
+import { PrincipleIntro } from "./principle-intro";
+import { PrincipleSummary } from "./principle-summary";
 
 export function Principle03Article() {
   return (
@@ -19,6 +28,16 @@ export function Principle03Article() {
           Control layer phải độc lập với kênh kích hoạt — mọi luồng đi qua cùng một Harness.
         </p>
       </header>
+
+      <section id="p3-intro" className="p1-section scroll-mt-28">
+        <PrincipleIntro
+          principleNumber={3}
+          variant="definition"
+          term="Event/channel agnostic"
+          simple={principle03Intro.simple}
+          note={principle03Intro.note}
+        />
+      </section>
 
       <section id="p3-diagram" className="p1-section scroll-mt-28">
         <Principle03Diagram />
@@ -113,6 +132,99 @@ export function Principle03Article() {
             </li>
           ))}
         </ul>
+      </section>
+
+      <section id="p3-adapter" className="p1-section scroll-mt-28">
+        <h2 className="p1-section-title">Channel adapter làm gì?</h2>
+        <p className="p1-section-lead">
+          Channel adapter là lớp chuyển đổi giữa channel và harness. Nó chỉ nên làm những việc cần
+          thiết để chuẩn hóa tín hiệu — không hơn.
+        </p>
+
+        <div className="p1-compare">
+          <div className="p1-compare-col p1-compare-col--root">
+            <p className="p1-compare-label">Nên làm</p>
+            <ul className="p1-compare-list">
+              {principle03AdapterShouldDo.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="p1-compare-divider p1-compare-divider--versus" aria-hidden="true">
+            <span>vs</span>
+          </div>
+
+          <div className="p1-compare-col p1-compare-col--reactive">
+            <p className="p1-compare-label">Không nên làm</p>
+            <ul className="p1-compare-list">
+              {principle03AdapterShouldNot.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="p3-event-schema" className="p1-section scroll-mt-28">
+        <h2 className="p1-section-title">Event schema chung</h2>
+        <p className="p1-section-lead">
+          Ở mức nâng cao, mọi yêu cầu đến Agent đều là một event có schema chuẩn:
+        </p>
+
+        <div className="p12-persist-log">
+          <div className="p12-persist-header">
+            <span className="p12-persist-title">event_schema.ts</span>
+            <span className="p12-persist-status">normalized</span>
+          </div>
+          <ul className="p12-persist-lines">
+            {principle03EventSchema.map((item) => (
+              <li key={item.field} className="p12-persist-line">
+                <span className="p12-persist-key">{item.field}</span>
+                <span className="p12-persist-value">
+                  {item.type} — {item.note}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section id="p3-signs" className="p1-section scroll-mt-28">
+        <h2 className="p1-section-title">Dấu hiệu nhận biết</h2>
+
+        <div className="p1-compare">
+          <div className="p1-compare-col p1-compare-col--reactive">
+            <p className="p1-compare-label">Áp dụng sai</p>
+            <ul className="p1-compare-list">
+              {principle03SignsWrong.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="p1-compare-divider p1-compare-divider--versus" aria-hidden="true">
+            <span>vs</span>
+          </div>
+
+          <div className="p1-compare-col p1-compare-col--root">
+            <p className="p1-compare-label">Áp dụng đúng</p>
+            <ul className="p1-compare-list">
+              {principle03SignsCorrect.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="p3-summary" className="p1-section scroll-mt-28">
+        <h2 className="p1-section-title">Tóm tắt</h2>
+        <PrincipleSummary
+          principleNumber={3}
+          headline={principle03Summary.headline}
+          points={principle03Summary.points}
+        />
       </section>
     </article>
   );

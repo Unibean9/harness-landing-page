@@ -2,10 +2,19 @@ import {
   principle07AntiPatterns,
   principle07Benefits,
   principle07HumanOnlyTasks,
+  principle07Intro,
   principle07PauseConditions,
   principle07PracticeExamples,
+  principle07ReviewLadder,
+  principle07ReviewScope,
+  principle07SignsCorrect,
+  principle07SignsWrong,
+  principle07Summary,
+  principle07TriggerScenarios,
 } from "@/lib/principles/principle-07-content";
 import { Principle07Diagram } from "./principle-07-diagram";
+import { PrincipleIntro } from "./principle-intro";
+import { PrincipleSummary } from "./principle-summary";
 
 export function Principle07Article() {
   return (
@@ -19,6 +28,16 @@ export function Principle07Article() {
           Con người là control point chính thức trong workflow — tham gia đúng lúc, không phải mọi lúc.
         </p>
       </header>
+
+      <section id="p7-intro" className="p1-section scroll-mt-28">
+        <PrincipleIntro
+          principleNumber={7}
+          variant="definition"
+          term="Human as control point"
+          simple={principle07Intro.simple}
+          note={principle07Intro.note}
+        />
+      </section>
 
       <section id="p7-diagram" className="p1-section scroll-mt-28">
         <Principle07Diagram />
@@ -104,6 +123,94 @@ export function Principle07Article() {
             </li>
           ))}
         </ul>
+      </section>
+
+      <section id="p7-triggers" className="p1-section scroll-mt-28">
+        <h2 className="p1-section-title">Khi nào cần human review?</h2>
+        <p className="p1-section-lead">
+          Human nên trở thành control point khi một trong các tình huống sau xuất hiện:
+        </p>
+
+        <ul className="p7-trigger-row">
+          {principle07TriggerScenarios.map((scenario) => (
+            <li key={scenario.situation} className="p7-trigger-pill">
+              <span className="p7-trigger-label">{scenario.situation}</span>
+              <span className="p7-trigger-hint">{scenario.reason}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section id="p7-review-scope" className="p1-section scroll-mt-28">
+        <h2 className="p1-section-title">Human review nên kiểm tra gì?</h2>
+        <p className="p1-section-lead">
+          Con người không phải làm lại toàn bộ tác vụ. Human control point chỉ cần kiểm tra:
+        </p>
+
+        <ul className="p1-checklist">
+          {principle07ReviewScope.map((item) => (
+            <li key={item} className="p1-checklist-item">
+              <span className="p1-checklist-mark" aria-hidden="true" />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section id="p7-ladder" className="p1-section scroll-mt-28">
+        <h2 className="p1-section-title">Các mức review</h2>
+        <p className="p1-section-lead">
+          Không phải mọi task đều cần cùng mức review. Harness tốt phân loại theo rủi ro:
+        </p>
+
+        <ul className="p13-maturity-ladder">
+          {principle07ReviewLadder.map((step) => (
+            <li key={step.level} className="p13-maturity-step">
+              <span className="p13-maturity-index">{step.level}</span>
+              <div>
+                <p className="p13-maturity-title">{step.label}</p>
+                <p className="p13-maturity-body">{step.hint}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section id="p7-signs" className="p1-section scroll-mt-28">
+        <h2 className="p1-section-title">Dấu hiệu nhận biết</h2>
+
+        <div className="p1-compare">
+          <div className="p1-compare-col p1-compare-col--reactive">
+            <p className="p1-compare-label">Áp dụng sai</p>
+            <ul className="p1-compare-list">
+              {principle07SignsWrong.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="p1-compare-divider p1-compare-divider--versus" aria-hidden="true">
+            <span>vs</span>
+          </div>
+
+          <div className="p1-compare-col p1-compare-col--root">
+            <p className="p1-compare-label">Áp dụng đúng</p>
+            <ul className="p1-compare-list">
+              {principle07SignsCorrect.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="p7-summary" className="p1-section scroll-mt-28">
+        <h2 className="p1-section-title">Tóm tắt</h2>
+        <PrincipleSummary
+          principleNumber={7}
+          headline={principle07Summary.headline}
+          points={principle07Summary.points}
+        />
       </section>
     </article>
   );

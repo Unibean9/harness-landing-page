@@ -1,14 +1,22 @@
 import {
   principle05AntiPatterns,
   principle05Benefits,
+  principle05Equation,
+  principle05FeedbackLoop,
   principle05GuideItems,
   principle05GuidePractice,
+  principle05GuideTypes,
+  principle05Intro,
   principle05PromptOnlyProblems,
   principle05SensorChecks,
   principle05SensorPractice,
+  principle05SensorTypes,
+  principle05Summary,
   principle05WithoutGuideSensor,
 } from "@/lib/principles/principle-05-content";
 import { Principle05Diagram } from "./principle-05-diagram";
+import { PrincipleIntro } from "./principle-intro";
+import { PrincipleSummary } from "./principle-summary";
 
 export function Principle05Article() {
   return (
@@ -22,6 +30,17 @@ export function Principle05Article() {
           Mọi Agent cần được hướng dẫn trước khi hành động và được đánh giá sau khi hành động.
         </p>
       </header>
+
+      <section id="p5-intro" className="p1-section scroll-mt-28">
+        <PrincipleIntro
+          principleNumber={5}
+          variant="definition"
+          term="Guide & Sensor"
+          simple={principle05Intro.simple}
+          note={principle05Intro.note}
+          equation={principle05Equation}
+        />
+      </section>
 
       <section id="p5-diagram" className="p1-section scroll-mt-28">
         <Principle05Diagram />
@@ -147,6 +166,63 @@ export function Principle05Article() {
             </li>
           ))}
         </ul>
+      </section>
+
+      <section id="p5-guide-types" className="p1-section scroll-mt-28">
+        <h2 className="p1-section-title">Các loại Guide</h2>
+        <p className="p1-section-lead">
+          Guide là bất kỳ thứ gì giúp Agent biết nên làm gì và làm như thế nào. Guide càng rõ, Agent càng ít phải đoán.
+        </p>
+
+        <div className="p5-types-grid">
+          {principle05GuideTypes.map((item) => (
+            <div key={item.label} className="p5-type-row">
+              <span className="p5-type-label">{item.label}</span>
+              <span className="p5-type-role">{item.role}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="p5-sensor-types" className="p1-section scroll-mt-28">
+        <h2 className="p1-section-title">Các loại Sensor</h2>
+        <p className="p1-section-lead">
+          Sensor là bất kỳ thứ gì giúp hệ thống biết Agent đã làm đúng hay chưa. Sensor càng tốt, phát hiện lỗi càng sớm.
+        </p>
+
+        <div className="p5-types-grid">
+          {principle05SensorTypes.map((item) => (
+            <div key={item.label} className="p5-type-row">
+              <span className="p5-type-label">{item.label}</span>
+              <span className="p5-type-role">{item.role}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="p5-feedback-loop" className="p1-section scroll-mt-28">
+        <h2 className="p1-section-title">Vòng phản hồi</h2>
+        <p className="p1-section-lead">
+          Guide và Sensor tạo thành vòng cải tiến. Đây là nền tảng để Harness trưởng thành theo thời gian:
+        </p>
+
+        <ol className="p13-playbook">
+          {principle05FeedbackLoop.map((item) => (
+            <li key={item.step} className="p13-playbook-step">
+              <span className="p13-playbook-index">{item.step}</span>
+              <span className="p13-playbook-label">{item.action}</span>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section id="p5-summary" className="p1-section scroll-mt-28">
+        <h2 className="p1-section-title">Tóm tắt</h2>
+        <PrincipleSummary
+          principleNumber={5}
+          headline={principle05Summary.headline}
+          points={principle05Summary.points}
+        />
       </section>
     </article>
   );

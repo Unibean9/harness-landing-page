@@ -1,12 +1,21 @@
 import {
   principle08AntiPatterns,
+  principle08AppControls,
   principle08BadPractice,
   principle08Benefits,
   principle08ControlVerbs,
+  principle08Equation,
   principle08GoodStack,
+  principle08Intro,
   principle08LlmTraits,
+  principle08SignsCorrect,
+  principle08SignsWrong,
+  principle08StateMachine,
+  principle08Summary,
 } from "@/lib/principles/principle-08-content";
 import { Principle08Diagram } from "./principle-08-diagram";
+import { PrincipleIntro } from "./principle-intro";
+import { PrincipleSummary } from "./principle-summary";
 
 export function Principle08Article() {
   return (
@@ -20,6 +29,17 @@ export function Principle08Article() {
           Harness làm chủ luồng chạy — LLM không tự quyết mọi branch, retry và side effect.
         </p>
       </header>
+
+      <section id="p8-intro" className="p1-section scroll-mt-28">
+        <PrincipleIntro
+          principleNumber={8}
+          variant="definition"
+          term="App-owned control flow"
+          simple={principle08Intro.simple}
+          note={principle08Intro.note}
+          equation={principle08Equation}
+        />
+      </section>
 
       <section id="p8-diagram" className="p1-section scroll-mt-28">
         <Principle08Diagram />
@@ -131,6 +151,79 @@ export function Principle08Article() {
             </li>
           ))}
         </ul>
+      </section>
+
+      <section id="p8-app-controls" className="p1-section scroll-mt-28">
+        <h2 className="p1-section-title">Application kiểm soát gì?</h2>
+        <p className="p1-section-lead">
+          Application/Harness nên giữ quyền kiểm soát những thành phần sau. LLM chỉ cung cấp
+          reasoning để application quyết định:
+        </p>
+
+        <ul className="p4-capability-row">
+          {principle08AppControls.map((control) => (
+            <li key={control.label} className="p4-capability-pill">
+              <span className="p4-capability-label">{control.label}</span>
+              <span className="p4-capability-hint">{control.reason}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section id="p8-state-machine" className="p1-section scroll-mt-28">
+        <h2 className="p1-section-title">State machine rõ ràng</h2>
+        <p className="p1-section-lead">
+          Ở mức nâng cao, control flow được mô hình hóa như một state machine với các trạng thái
+          và điều kiện chuyển tiếp rõ ràng:
+        </p>
+
+        <ol className="p13-playbook">
+          {principle08StateMachine.map((step, index) => (
+            <li key={step.state} className="p13-playbook-step">
+              <span className="p13-playbook-index">{String(index + 1).padStart(2, "0")}</span>
+              <div className="p13-playbook-body">
+                <p className="p13-playbook-label">{step.state}</p>
+                <p className="p13-playbook-hint">{step.note}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section id="p8-signs" className="p1-section scroll-mt-28">
+        <h2 className="p1-section-title">Dấu hiệu nhận biết</h2>
+
+        <div className="p1-compare">
+          <div className="p1-compare-col p1-compare-col--reactive">
+            <p className="p1-compare-label">Áp dụng sai</p>
+            <ul className="p1-compare-list">
+              {principle08SignsWrong.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="p1-compare-divider p1-compare-divider--versus" aria-hidden="true">
+            <span>vs</span>
+          </div>
+
+          <div className="p1-compare-col p1-compare-col--root">
+            <p className="p1-compare-label">Áp dụng đúng</p>
+            <ul className="p1-compare-list">
+              {principle08SignsCorrect.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section id="p8-summary" className="p1-section scroll-mt-28">
+        <h2 className="p1-section-title">Tóm tắt</h2>
+        <PrincipleSummary
+          principleNumber={8}
+          headline={principle08Summary.headline}
+          points={principle08Summary.points}
+        />
       </section>
     </article>
   );

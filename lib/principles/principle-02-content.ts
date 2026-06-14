@@ -1,10 +1,14 @@
 export const principle02Toc = [
+  { id: "p2-intro", label: "Hiểu đơn giản" },
   { id: "p2-diagram", label: "Harnessability là gì" },
   { id: "p2-why-exists", label: "Vì sao nguyên lý này tồn tại" },
   { id: "p2-the-principle", label: "Nguyên lý cốt lõi" },
   { id: "p2-why-matters", label: "Tại sao quan trọng" },
   { id: "p2-practice", label: "Thực hành" },
   { id: "p2-antipatterns", label: "Anti-pattern" },
+  { id: "p2-building-blocks", label: "Sáu thành phần" },
+  { id: "p2-signs", label: "Dấu hiệu nhận biết" },
+  { id: "p2-summary", label: "Tóm tắt" },
 ] as const;
 
 export const principle02SystemProblems = [
@@ -74,3 +78,66 @@ export const principle02AntiPatterns = [
     body: "Kiến trúc thực tế khác xa tài liệu.",
   },
 ] as const;
+
+// 6 Building blocks of Harnessability
+export const principle02BuildingBlocks = [
+  {
+    index: "01",
+    label: "Boundary rõ ràng",
+    description: "Phân biệt rõ: Input → Processing → Decision → Action → Validation → Output. Các phần không được trộn lẫn.",
+  },
+  {
+    index: "02",
+    label: "Contract rõ ràng",
+    description: "Mỗi bước có contract: nhận dữ liệu gì, trả về gì, field nào bắt buộc, lỗi nào có thể xảy ra, điều kiện thành công/thất bại.",
+  },
+  {
+    index: "03",
+    label: "Convention ổn định",
+    description: "Quy ước rõ về: đặt tên, tổ chức file, mô tả schema, ghi log, định nghĩa lỗi, lưu state, version spec.",
+  },
+  {
+    index: "04",
+    label: "Testability",
+    description: "Nếu hệ thống không test được thì Harness khó biết Agent làm đúng hay sai. Test là một dạng sensor quan trọng.",
+  },
+  {
+    index: "05",
+    label: "Observability",
+    description: "Hệ thống để lại dấu vết: Agent nhận input gì, dùng context nào, gọi tool nào, tạo output gì, lỗi ở đâu, validation pass/fail.",
+  },
+  {
+    index: "06",
+    label: "Recoverability",
+    description: "Agent có thể lỗi — hệ thống cần: retry, resume, fallback, rollback, human review.",
+  },
+] as const;
+
+// Paired signs — low vs high Harnessability on the same dimension
+export const principle02SignRows = [
+  { low: "Rule nằm rải rác", high: "Cấu trúc rõ" },
+  { low: "Logic không có boundary", high: "Workflow rõ" },
+  { low: "Output tự do, không schema", high: "Schema rõ" },
+  { low: "Không có test", high: "Test rõ" },
+  { low: "Không có trace", high: "Logging rõ" },
+  { low: "Không biết trạng thái hiện tại", high: "State rõ" },
+  { low: "Không biết Agent được phép làm gì", high: "Quyền hạn rõ" },
+  { low: "Lỗi chỉ được xử lý thủ công", high: "Error rõ" },
+  { low: "Khó debug khi Agent sai", high: "Spec rõ" },
+  { low: null, high: "Có thể replay một lần chạy" },
+] as const;
+
+export const principle02Intro = {
+  simple:
+    "Harnessability nghĩa là: hệ thống phải được thiết kế sao cho agent dễ hiểu, dễ làm đúng và dễ bị kiểm tra.",
+  note: "Muốn agent làm đúng, môi trường quanh agent phải rõ ràng. Nếu hệ thống quá mơ hồ, agent sẽ phải đoán. Càng đoán nhiều, càng dễ sai.",
+} as const;
+
+export const principle02Summary = {
+  headline:
+    "Harnessability = thiết kế hệ thống sao cho agent dễ được hướng dẫn, kiểm tra và kiểm soát.",
+  points: [
+    "Hệ thống càng rõ ràng, agent càng ít phải đoán.",
+    "Agent càng ít phải đoán, harness càng dễ kiểm soát.",
+  ],
+} as const;

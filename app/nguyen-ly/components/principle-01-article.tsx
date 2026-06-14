@@ -2,10 +2,18 @@ import {
   principle01AntiPatterns,
   principle01Benefits,
   principle01CommonReactions,
+  principle01Equation,
+  principle01HarnessComponents,
+  principle01Intro,
+  principle01IntroQuestions,
+  principle01LifecycleSteps,
   principle01PracticeChecks,
   principle01RootCauses,
+  principle01Summary,
 } from "@/lib/principles/principle-01-content";
 import { Principle01Diagram } from "./principle-01-diagram";
+import { PrincipleIntro } from "./principle-intro";
+import { PrincipleSummary } from "./principle-summary";
 
 export function Principle01Article() {
   return (
@@ -19,6 +27,17 @@ export function Principle01Article() {
           Khi Agent hoạt động không hiệu quả, hãy tối ưu Harness trước khi tối ưu Model.
         </p>
       </header>
+
+      <section id="p1-intro" className="p1-section scroll-mt-28">
+        <PrincipleIntro
+          principleNumber={1}
+          variant="question"
+          simple={principle01Intro.simple}
+          note={principle01Intro.note}
+          questions={principle01IntroQuestions}
+          equation={principle01Equation}
+        />
+      </section>
 
       <section id="p1-diagram" className="p1-section scroll-mt-28">
         <Principle01Diagram />
@@ -124,6 +143,52 @@ export function Principle01Article() {
             </li>
           ))}
         </ul>
+      </section>
+
+      <section id="p1-components" className="p1-section scroll-mt-28">
+        <h2 className="p1-section-title">Thành phần của Harness</h2>
+        <p className="p1-section-lead">
+          Một Harness đầy đủ thường có mười thành phần. Mỗi thành phần giải quyết một khía cạnh vận hành khác nhau.
+        </p>
+
+        <ul className="p1-component-grid">
+          {principle01HarnessComponents.map((item, index) => (
+            <li key={item.label} className="p1-component-row">
+              <span className="p1-benefit-index">{String(index + 1).padStart(2, "0")}</span>
+              <span className="p1-component-label">{item.label}</span>
+              <span className="p1-component-role">{item.role}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section id="p1-lifecycle" className="p1-section scroll-mt-28">
+        <h2 className="p1-section-title">Vòng đời thực thi</h2>
+        <p className="p1-section-lead">
+          Khi Harness-first được áp dụng đúng, mỗi lần Agent chạy trở thành một controlled execution có vòng đời rõ ràng:
+        </p>
+
+        <ul className="p1-lifecycle-strip">
+          {principle01LifecycleSteps.map((step, index) => (
+            <li key={step} className="p1-lifecycle-step">
+              <span className="p1-benefit-index">{String(index + 1).padStart(2, "0")}</span>
+              <span>{step}</span>
+            </li>
+          ))}
+        </ul>
+
+        <p className="p1-section-note">
+          Chất lượng Agent không còn được đánh giá bằng một câu trả lời riêng lẻ, mà bằng toàn bộ khả năng vận hành của hệ thống.
+        </p>
+      </section>
+
+      <section id="p1-summary" className="p1-section scroll-mt-28">
+        <h2 className="p1-section-title">Tóm tắt</h2>
+        <PrincipleSummary
+          principleNumber={1}
+          headline={principle01Summary.headline}
+          points={principle01Summary.points}
+        />
       </section>
     </article>
   );

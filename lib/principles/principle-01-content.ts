@@ -1,10 +1,14 @@
 export const principle01Toc = [
+  { id: "p1-intro", label: "Hiểu đơn giản" },
   { id: "p1-diagram", label: "Agent = Model + Harness" },
   { id: "p1-why-exists", label: "Vì sao nguyên lý này tồn tại" },
   { id: "p1-the-principle", label: "Nguyên lý cốt lõi" },
   { id: "p1-why-matters", label: "Tại sao quan trọng" },
   { id: "p1-practice", label: "Thực hành" },
   { id: "p1-antipatterns", label: "Anti-pattern" },
+  { id: "p1-components", label: "Thành phần Harness" },
+  { id: "p1-lifecycle", label: "Vòng đời thực thi" },
+  { id: "p1-summary", label: "Tóm tắt" },
 ] as const;
 
 export const principle01HarnessLayers = [
@@ -77,3 +81,65 @@ export const principle01AntiPatterns = [
     body: "Agent cần tool nhưng không được cấp quyền truy cập.",
   },
 ] as const;
+
+// 10-component harness table
+export const principle01HarnessComponents = [
+  { label: "Prompt / Instruction", role: "Hướng dẫn model làm gì" },
+  { label: "Spec", role: "Mô tả rule, constraint, mục tiêu" },
+  { label: "Context builder", role: "Chọn dữ liệu cần đưa cho model" },
+  { label: "Tool control", role: "Kiểm soát tool model được phép dùng" },
+  { label: "Output schema", role: "Ép output có cấu trúc" },
+  { label: "Validation", role: "Kiểm tra output đúng/sai" },
+  { label: "State", role: "Lưu trạng thái quá trình chạy" },
+  { label: "Trace / Log", role: "Ghi lại hành vi của agent" },
+  { label: "Retry / Fallback", role: "Xử lý khi lỗi" },
+  { label: "Human review", role: "Cho người can thiệp khi cần" },
+] as const;
+
+// Lifecycle flow (10 steps)
+export const principle01LifecycleSteps = [
+  "Task received",
+  "Context selected",
+  "Model called",
+  "Tool used",
+  "Output generated",
+  "Output validated",
+  "State updated",
+  "Trace recorded",
+  "Error handled",
+  "Human reviewed if needed",
+] as const;
+
+// 6 layers of the 13 principles system
+export const principle01SixLayers = [
+  { layer: "Tầng 1", title: "Tư duy nền tảng", items: "Harness-first · Harnessability" },
+  { layer: "Tầng 2", title: "Kiến trúc vận hành", items: "Event/channel agnostic · Production controllability" },
+  { layer: "Tầng 3", title: "Cơ chế kiểm soát", items: "Guide & Sensor · Spec-as-source" },
+  { layer: "Tầng 4", title: "Governance", items: "Human as control point · Application-owned control flow" },
+  { layer: "Tầng 5", title: "Thiết kế agent", items: "Small focused agents · Context ownership · Structured-output-first" },
+  { layer: "Tầng 6", title: "Quan sát & cải tiến", items: "Traceable state · Error as feedback" },
+] as const;
+
+export const principle01Intro = {
+  simple:
+    "Harness-first nghĩa là: trước khi cố làm model thông minh hơn, hãy thiết kế hệ thống bao quanh model để model làm việc đúng hơn, an toàn hơn và dễ kiểm soát hơn.",
+  note: 'Đừng chỉ hỏi: "Dùng model nào tốt nhất?" — Hãy hỏi trước: "Hệ thống quanh model đã kiểm soát được model chưa?"',
+} as const;
+
+export const principle01IntroQuestions = {
+  wrong: "Dùng model nào tốt nhất?",
+  right: "Hệ thống quanh model đã kiểm soát được model chưa?",
+} as const;
+
+export const principle01Equation = [
+  { term: "Model", def: "năng lực suy luận" },
+  { term: "Harness", def: "hệ thống kiểm soát năng lực đó" },
+] as const;
+
+export const principle01Summary = {
+  headline: "Harness-first = kiểm soát hệ thống quanh model trước, tối ưu model sau.",
+  points: [
+    "Model tạo ra năng lực.",
+    "Harness biến năng lực đó thành hành vi có thể kiểm soát.",
+  ],
+} as const;

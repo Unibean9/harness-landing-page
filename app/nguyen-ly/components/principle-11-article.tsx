@@ -1,13 +1,22 @@
 import {
   principle11AntiPatterns,
   principle11Benefits,
+  principle11Equation,
   principle11FreeTextPainPoints,
+  principle11Intro,
+  principle11OutputComponents,
   principle11OutputFormats,
+  principle11OutputGate,
   principle11PipelineSteps,
   principle11PracticeProse,
+  principle11SignsCorrect,
+  principle11SignsWrong,
+  principle11Summary,
 } from "@/lib/principles/principle-11-content";
 import { Principle11Diagram } from "./principle-11-diagram";
 import { Principle11JsonBlock } from "./principle-11-json-block";
+import { PrincipleIntro } from "./principle-intro";
+import { PrincipleSummary } from "./principle-summary";
 
 export function Principle11Article() {
   return (
@@ -21,6 +30,17 @@ export function Principle11Article() {
           Đầu ra có cấu trúc để sensor tính toán kiểm tra tự động trước khi execute.
         </p>
       </header>
+
+      <section id="p11-intro" className="p1-section scroll-mt-28">
+        <PrincipleIntro
+          principleNumber={11}
+          variant="definition"
+          term="Structured-output-first"
+          simple={principle11Intro.simple}
+          note={principle11Intro.note}
+          equation={principle11Equation}
+        />
+      </section>
 
       <section id="p11-diagram" className="p1-section scroll-mt-28">
         <Principle11Diagram />
@@ -128,6 +148,80 @@ export function Principle11Article() {
             </li>
           ))}
         </ul>
+      </section>
+
+      <section id="p11-output-components" className="p1-section scroll-mt-28">
+        <h2 className="p1-section-title">Thành phần của structured output</h2>
+        <p className="p1-section-lead">
+          Một structured output đầy đủ nên có đủ mười thành phần. Không phải task nào cũng cần tất
+          cả, nhưng biết sẵn để chọn đúng:
+        </p>
+
+        <ul className="p5-types-grid">
+          {principle11OutputComponents.map((item) => (
+            <li key={item.field} className="p5-type-row">
+              <span className="p5-type-label">{item.field}</span>
+              <span className="p5-type-role">{item.role}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section id="p11-output-gate" className="p1-section scroll-mt-28">
+        <h2 className="p1-section-title">Output gate</h2>
+        <p className="p1-section-lead">
+          Structured output trở thành cổng kiểm soát. Không có structured output thì không có gate
+          — không có gate thì agent tự do execute:
+        </p>
+
+        <ol className="p13-playbook">
+          {principle11OutputGate.map((item) => (
+            <li key={item.step} className="p13-playbook-step">
+              <span className="p13-playbook-index">{item.step}</span>
+              <div className="p13-playbook-body">
+                <p className="p13-playbook-label">{item.label}</p>
+                <p className="p13-playbook-hint">{item.hint}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section id="p11-signs" className="p1-section scroll-mt-28">
+        <h2 className="p1-section-title">Dấu hiệu nhận biết</h2>
+
+        <div className="p1-compare">
+          <div className="p1-compare-col p1-compare-col--reactive">
+            <p className="p1-compare-label">Áp dụng sai</p>
+            <ul className="p1-compare-list">
+              {principle11SignsWrong.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="p1-compare-divider" aria-hidden="true">
+            <span>vs</span>
+          </div>
+
+          <div className="p1-compare-col p1-compare-col--root">
+            <p className="p1-compare-label">Áp dụng đúng</p>
+            <ul className="p1-compare-list">
+              {principle11SignsCorrect.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="p11-summary" className="p1-section scroll-mt-28">
+        <h2 className="p1-section-title">Tóm tắt</h2>
+        <PrincipleSummary
+          principleNumber={11}
+          headline={principle11Summary.headline}
+          points={principle11Summary.points}
+        />
       </section>
     </article>
   );

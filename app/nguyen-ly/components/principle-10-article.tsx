@@ -1,14 +1,25 @@
 import {
   principle10AntiPatterns,
   principle10Benefits,
+  principle10BuilderResponsibilities,
+  principle10ContextPackage,
+  principle10ContextTypes,
+  principle10Equation,
   principle10HarnessDecisions,
+  principle10Intro,
+  principle10IntroQuestions,
   principle10OutcomeCompare,
   principle10OverflowEffects,
   principle10References,
+  principle10SignsCorrect,
+  principle10SignsWrong,
+  principle10Summary,
   principle10TaskExcludes,
   principle10TaskNeeds,
 } from "@/lib/principles/principle-10-content";
 import { Principle10Diagram } from "./principle-10-diagram";
+import { PrincipleIntro } from "./principle-intro";
+import { PrincipleSummary } from "./principle-summary";
 
 export function Principle10Article() {
   return (
@@ -22,6 +33,17 @@ export function Principle10Article() {
           Context window là tài nguyên đắt — chỉ đưa vào dữ liệu cần thiết vào đúng thời điểm.
         </p>
       </header>
+
+      <section id="p10-intro" className="p1-section scroll-mt-28">
+        <PrincipleIntro
+          principleNumber={10}
+          variant="question"
+          simple={principle10Intro.simple}
+          note={principle10Intro.note}
+          questions={principle10IntroQuestions}
+          equation={principle10Equation}
+        />
+      </section>
 
       <section id="p10-diagram" className="p1-section scroll-mt-28">
         <Principle10Diagram />
@@ -205,6 +227,99 @@ export function Principle10Article() {
             </li>
           ))}
         </ul>
+      </section>
+
+      <section id="p10-context-types" className="p1-section scroll-mt-28">
+        <h2 className="p1-section-title">Các loại context</h2>
+        <p className="p1-section-lead">
+          Không phải task nào cũng cần tất cả các loại context. Harness cần biết loại nào phù hợp với
+          từng nhiệm vụ:
+        </p>
+
+        <ul className="p2-trait-grid">
+          {principle10ContextTypes.map((contextType) => (
+            <li key={contextType.label} className="p2-trait-card">
+              <p className="p2-trait-label">{contextType.label}</p>
+              <p className="p2-trait-hint">{contextType.example}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section id="p10-builder" className="p1-section scroll-mt-28">
+        <h2 className="p1-section-title">Context builder làm gì?</h2>
+        <p className="p1-section-lead">
+          Context builder là thành phần quyết định context được đưa vào model. Nó phải xử lý:
+        </p>
+
+        <ul className="p1-benefit-grid">
+          {principle10BuilderResponsibilities.map((item, index) => (
+            <li key={item.label} className="p1-benefit-card">
+              <span className="p1-benefit-index">{String(index + 1).padStart(2, "0")}</span>
+              <p className="p1-benefit-title">{item.label}</p>
+              <p className="p1-benefit-body">{item.hint}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section id="p10-package" className="p1-section scroll-mt-28">
+        <h2 className="p1-section-title">Context package nâng cao</h2>
+        <p className="p1-section-lead">
+          Ở mức nâng cao, model không nhận &ldquo;một đoạn văn dài&rdquo; mà nhận một context package
+          có cấu trúc:
+        </p>
+
+        <div className="p12-persist-log">
+          <div className="p12-persist-header">
+            <span className="p12-persist-title">context_package.json</span>
+            <span className="p12-persist-status">curated</span>
+          </div>
+          <ul className="p12-persist-lines">
+            {principle10ContextPackage.map((item) => (
+              <li key={item.field} className="p12-persist-line">
+                <span className="p12-persist-key">{item.field}</span>
+                <span className="p12-persist-value">{item.note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section id="p10-signs" className="p1-section scroll-mt-28">
+        <h2 className="p1-section-title">Dấu hiệu nhận biết</h2>
+
+        <div className="p1-compare">
+          <div className="p1-compare-col p1-compare-col--reactive">
+            <p className="p1-compare-label">Áp dụng sai</p>
+            <ul className="p1-compare-list">
+              {principle10SignsWrong.map((sign) => (
+                <li key={sign}>{sign}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="p1-compare-divider p1-compare-divider--versus" aria-hidden="true">
+            <span>vs</span>
+          </div>
+
+          <div className="p1-compare-col p1-compare-col--root">
+            <p className="p1-compare-label">Áp dụng đúng</p>
+            <ul className="p1-compare-list">
+              {principle10SignsCorrect.map((sign) => (
+                <li key={sign}>{sign}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section id="p10-summary" className="p1-section scroll-mt-28">
+        <h2 className="p1-section-title">Tóm tắt</h2>
+        <PrincipleSummary
+          principleNumber={10}
+          headline={principle10Summary.headline}
+          points={principle10Summary.points}
+        />
       </section>
     </article>
   );
