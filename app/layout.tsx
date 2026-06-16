@@ -75,7 +75,7 @@ export default function RootLayout({
       className={`${libreCaslon.variable} ${inter.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col">
+      <body className="flex min-h-full min-w-0 flex-col overflow-x-clip">
         <Providers>
           <SkipToContent />
           {children}

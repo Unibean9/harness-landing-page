@@ -1,16 +1,16 @@
 export const sdd01Toc = [
   { id: "sdd01-intro", label: "Specification chết dần" },
   { id: "sdd01-problem", label: "Vấn đề cốt lõi" },
-  { id: "sdd01-shift", label: "Read → Execute" },
-  { id: "sdd01-worlds", label: "Documents vs Engines" },
-  { id: "sdd01-gps", label: "GPS analogy" },
-  { id: "sdd01-drift", label: "Documentation drift" },
+  { id: "sdd01-shift", label: "Đọc → Thực thi" },
+  { id: "sdd01-worlds", label: "Tài liệu vs động cơ" },
+  { id: "sdd01-gps", label: "Ẩn dụ GPS" },
+  { id: "sdd01-drift", label: "Documentation lệch pha" },
   { id: "sdd01-ai", label: "Kỷ nguyên AI" },
-  { id: "sdd01-pipeline", label: "Spec-driven pipeline" },
+  { id: "sdd01-pipeline", label: "Pipeline spec-driven" },
   { id: "sdd01-example", label: "Ví dụ CRM" },
   { id: "sdd01-harness", label: "Harness Engineering" },
   { id: "sdd01-signs", label: "Dấu hiệu cảnh báo" },
-  { id: "sdd01-iac", label: "Specification as Infrastructure" },
+  { id: "sdd01-iac", label: "Specification như infrastructure" },
   { id: "sdd01-summary", label: "Tóm tắt" },
 ] as const;
 
@@ -22,13 +22,15 @@ export const sdd01Intro = {
 
 export const sdd01StorageTools = ["Notion", "Confluence", "Google Docs"] as const;
 
-export const sdd01DeathReviewSteps = ["Review", "Thống nhất", "Phê duyệt"] as const;
+export const sdd01DeathReviewSteps = ["Rà soát", "Thống nhất", "Phê duyệt"] as const;
+
+export const sdd01HubRoles = ["Lập trình viên", "QA", "Kiến trúc sư", "PM"] as const;
 
 /** Role → tool fragmentation (spec no longer referenced) */
 export const sdd01ScatteredWork = [
-  { role: "Developer", tool: "Jira" },
+  { role: "Lập trình viên", tool: "Jira" },
   { role: "QA", tool: "Bộ test case" },
-  { role: "Architect", tool: "Sơ đồ" },
+  { role: "Kiến trúc sư", tool: "Sơ đồ" },
   { role: "Product Manager", tool: "Biên bản họp" },
 ] as const;
 
@@ -44,22 +46,22 @@ export const sdd01DeathLabels = {
 
 export const sdd01TraditionalFlow = [
   "Specification",
-  "Humans Read It",
-  "Humans Create Plan",
-  "Humans Create Tasks",
-  "Humans Build Software",
+  "Con người đọc",
+  "Con người lập kế hoạch",
+  "Con người tạo nhiệm vụ",
+  "Con người build phần mềm",
 ] as const;
 
-export const sdd01ReadFlow = ["Specification", "Read"] as const;
+export const sdd01ReadFlow = ["Specification", "Đọc"] as const;
 
-export const sdd01ExecuteFlow = ["Specification", "Execute"] as const;
+export const sdd01ExecuteFlow = ["Specification", "Thực thi"] as const;
 
 export const sdd01EngineFlow = [
   "Specification",
-  "Plan",
-  "Tasks",
-  "Implementation",
-  "Validation",
+  "Kế hoạch",
+  "Nhiệm vụ",
+  "Triển khai",
+  "Kiểm tra",
 ] as const;
 
 export const sdd01GpsActions = [
@@ -71,62 +73,68 @@ export const sdd01GpsActions = [
 ] as const;
 
 export const sdd01DriftFlow = [
-  "Specification Created",
-  "Code Changes",
-  "Architecture Changes",
-  "Requirements Evolve",
-  "Specification Stays The Same",
+  "Specification được tạo",
+  "Code thay đổi",
+  "Kiến trúc thay đổi",
+  "Requirement tiến hóa",
+  "Specification giữ nguyên",
 ] as const;
 
-export const sdd01VagueSpec = `Build a student management feature.`;
+export const sdd01VagueSpec = `Xây tính năng quản lý sinh viên.`;
 
 export const sdd01StructuredSpec = {
-  goal: "Track student applications",
-  constraints: "Role-based access required",
-  acceptance: "Admissions staff can move applicants between stages",
-  examples: "Submitted → Interview → Accepted",
+  goal: "Theo dõi hồ sơ ứng viên",
+  constraints: "Yêu cầu phân quyền theo vai trò",
+  acceptance: "Nhân viên tuyển sinh có thể chuyển ứng viên giữa các giai đoạn",
+  examples: "Đã nộp → Phỏng vấn → Trúng tuyển",
 } as const;
 
 export const sdd01PipelineSteps = [
   "Specification",
-  "Clarification",
-  "Plan",
-  "Tasks",
-  "Implementation",
-  "Validation",
+  "Làm rõ",
+  "Kế hoạch",
+  "Nhiệm vụ",
+  "Triển khai",
+  "Kiểm tra",
 ] as const;
 
 export const sdd01CascadeSteps = [
-  "Specification Updated",
-  "Plan Updated",
-  "Tasks Updated",
-  "Validation Updated",
+  "Specification cập nhật",
+  "Kế hoạch cập nhật",
+  "Nhiệm vụ cập nhật",
+  "Kiểm tra cập nhật",
 ] as const;
 
 export const sdd01CrmSpec = [
-  "Admissions staff must be able to track applicants through multiple stages.",
-  "Each stage transition must be recorded.",
-  "Historical transitions must be visible.",
+  "Nhân viên tuyển sinh phải theo dõi ứng viên qua nhiều giai đoạn.",
+  "Mỗi lần chuyển giai đoạn phải được ghi lại.",
+  "Lịch sử chuyển đổi phải hiển thị được.",
 ] as const;
 
 export const sdd01CrmArtifacts = {
   plan: [
-    "Applicant Workflow Module",
-    "Transition History Service",
-    "Workflow UI",
+    "Module workflow ứng viên",
+    "Service lịch sử chuyển trạng thái",
+    "Giao diện workflow",
   ],
   tasks: [
-    "Create applicant stage model",
-    "Create transition history table",
-    "Build workflow API",
-    "Build workflow interface",
+    "Tạo model giai đoạn ứng viên",
+    "Tạo bảng lịch sử chuyển đổi",
+    "Build API workflow",
+    "Build giao diện workflow",
   ],
   validation: [
-    "Verify stage transitions",
-    "Verify audit history",
-    "Verify permission rules",
+    "Kiểm tra chuyển giai đoạn",
+    "Kiểm tra lịch sử audit",
+    "Kiểm tra quy tắc phân quyền",
   ],
 } as const;
+
+export const sdd01CrmColumns = [
+  { key: "plan" as const, label: "Kế hoạch" },
+  { key: "tasks" as const, label: "Nhiệm vụ" },
+  { key: "validation" as const, label: "Kiểm tra" },
+] as const;
 
 export const sdd01HarnessFlow = [
   "Specification",
@@ -147,7 +155,7 @@ export const sdd01WarningSigns = [
     body: "Mỗi sprint, team dịch lại specification sang Jira từ đầu.",
   },
   {
-    title: "Không có acceptance criteria",
+    title: "Không có tiêu chí chấp nhận",
     body: "Không có tiêu chí kiểm thử rõ ràng gắn với spec.",
   },
   {
@@ -160,15 +168,15 @@ export const sdd01WarningSigns = [
   },
 ] as const;
 
-export const sdd01IacBefore = ["Infrastructure Document", "Humans Build Servers"] as const;
+export const sdd01IacBefore = ["Tài liệu hạ tầng", "Con người dựng server"] as const;
 
-export const sdd01IacAfter = ["Terraform", "Infrastructure"] as const;
+export const sdd01IacAfter = ["Terraform", "Hạ tầng"] as const;
 
 export const sdd01Summary = {
-  headline: "Specification produces work, không chỉ mô tả work.",
+  headline: "Specification tạo ra công việc — không chỉ mô tả công việc.",
   points: [
-    "Traditional: specification describes work.",
-    "Executable: specification produces work.",
-    "Nếu spec không tạo được plan, tasks, tests và deployment, Spec-Driven Development không thể hoạt động.",
+    "Truyền thống: specification mô tả công việc.",
+    "Executable: specification tạo ra công việc.",
+    "Nếu spec không tạo được kế hoạch, nhiệm vụ, test và deployment, Spec-Driven Development không thể hoạt động.",
   ],
 } as const;

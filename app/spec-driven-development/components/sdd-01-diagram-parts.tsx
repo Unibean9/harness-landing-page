@@ -179,7 +179,7 @@ export function ComparePanels({
   good: React.ReactNode;
 }) {
   return (
-    <div className="sdd01-diagram">
+    <div className="sdd01-diagram w-full min-w-0 max-w-full">
       <DiagramSplit>
         <DiagramPanel label={badLabel} tone="muted" result={badResult}>
           {bad}

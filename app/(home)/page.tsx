@@ -20,12 +20,12 @@ export const metadata: Metadata = buildPageMetadata({
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col bg-background text-foreground">
+    <div className="flex min-h-screen min-w-0 flex-col overflow-x-clip bg-background text-foreground">
       <HomeJsonLd />
       <Header currentPath="/" />
       <HarnessMotion />
 
-      <main id="main-content" className="flex-1 overflow-x-hidden w-full max-w-full">
+      <main id="main-content" className="min-w-0 w-full max-w-full flex-1 overflow-x-clip">
         <HeroSection />
         <DefinitionSection />
         <ProblemSection />

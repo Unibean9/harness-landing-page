@@ -1,12 +1,11 @@
 import {
   sdd01DeathLabels,
   sdd01DeathReviewSteps,
+  sdd01HubRoles,
   sdd01ScatteredWork,
   sdd01StorageTools,
 } from "@/lib/sdd/sdd-01-content";
 import { BranchLayout, FlowConnector, FlowNode, ForkEntry } from "./sdd-01-diagram-parts";
-
-const sdd01HubRoles = ["Developer", "QA", "Architect", "PM"] as const;
 
 export function Sdd01DeathDiagram() {
   const docsLabel = sdd01StorageTools.join(" / ");

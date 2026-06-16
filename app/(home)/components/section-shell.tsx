@@ -25,7 +25,7 @@ export function SectionShell({
         className
       )}
     >
-      <div className={cn("mx-auto w-full max-w-7xl", innerClassName)}>{children}</div>
+      <div className={cn("mx-auto w-full min-w-0 max-w-7xl", innerClassName)}>{children}</div>
     </section>
   );
 }

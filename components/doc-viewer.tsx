@@ -279,7 +279,7 @@ export function DocViewer({
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-background text-foreground transition-colors duration-200">
+    <div className="flex min-h-screen min-w-0 flex-col overflow-x-clip bg-background text-foreground transition-colors duration-200">
       <Header
         showSidebarToggle={true}
         isSidebarOpen={isMobileSidebarOpen}
@@ -287,7 +287,7 @@ export function DocViewer({
       />
 
       {/* 2. Main Page Layout (Sidebar + Content) - Shifted down to avoid overlapping floating header */}
-      <div className="flex-1 w-full max-w-[1400px] mx-auto flex pt-28 lg:pt-32">
+      <div className="mx-auto flex min-w-0 w-full max-w-full flex-1 pt-28 lg:max-w-[1400px] lg:pt-32">
         
         {/* Desktop Sidebar (Left) */}
         <aside className="w-64 border-r border-border shrink-0 hidden lg:block overflow-y-auto max-h-[calc(100vh-10rem)] sticky top-28 bg-background">

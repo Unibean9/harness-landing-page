@@ -108,6 +108,8 @@
 
   html {
     scroll-behavior: smooth;
+    overflow-x: clip;
+    max-width: 100%;
   }
 
   html,
@@ -117,6 +119,8 @@
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
+    overflow-x: clip;
+    max-width: 100%;
   }
 
   .font-display {
@@ -490,15 +494,16 @@
   }
 
   .principles-chrome-motion {
+    @apply min-w-0 w-full max-w-full;
     will-change: transform;
   }
 
   .principles-mobile-bar-inner {
-    @apply mx-auto flex max-w-[90rem] items-center justify-between gap-4 px-4;
+    @apply mx-auto flex w-full min-w-0 max-w-[90rem] items-center justify-between gap-2 px-4;
   }
 
   .principles-mobile-bar-trigger {
-    @apply inline-flex min-h-11 items-center gap-2 text-sm font-medium text-brand-primary/78 transition duration-200 hover:text-brand-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/25 active:scale-[0.99];
+    @apply inline-flex min-h-11 min-w-0 max-w-[calc(50%-0.5rem)] shrink items-center gap-2 text-sm font-medium text-brand-primary/78 transition duration-200 hover:text-brand-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/25 active:scale-[0.99];
     font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   }
 
@@ -574,7 +579,11 @@
   }
 
   .principles-doc-layout {
-    @apply relative mx-auto grid max-w-[90rem] gap-x-10 gap-y-10 lg:grid-cols-[minmax(0,13.75rem)_minmax(0,42.5rem)] lg:items-start lg:gap-x-12 xl:grid-cols-[minmax(0,13.75rem)_minmax(0,42.5rem)_minmax(0,11.25rem)] xl:justify-center xl:gap-x-14;
+    @apply relative mx-auto grid w-full min-w-0 max-w-[90rem] gap-x-10 gap-y-10 lg:grid-cols-[minmax(0,13.75rem)_minmax(0,42.5rem)] lg:items-start lg:gap-x-12 xl:grid-cols-[minmax(0,13.75rem)_minmax(0,42.5rem)_minmax(0,11.25rem)] xl:justify-center xl:gap-x-14;
+  }
+
+  .principles-doc-layout > * {
+    @apply min-w-0;
   }
 
   .principles-sidebar-slot {
@@ -625,7 +634,7 @@
 
   /* Center article */
   .principles-doc-main {
-    @apply min-w-0;
+    @apply min-w-0 w-full max-w-full;
   }
 
   .principles-doc-main--docked {
@@ -633,7 +642,7 @@
   }
 
   .principles-doc-content {
-    @apply min-w-0 flex-1 pb-4;
+    @apply min-w-0 w-full max-w-full flex-1 overflow-x-clip pb-4;
   }
 
   .principles-doc-main--docked .principles-doc-content {
@@ -641,7 +650,7 @@
   }
 
   .principles-doc-header {
-    @apply mb-10 space-y-6 sm:mb-12 sm:space-y-7;
+    @apply mb-10 min-w-0 w-full max-w-full space-y-6 sm:mb-12 sm:space-y-7;
   }
 
   .principles-doc-callout {
@@ -665,6 +674,7 @@
   .principles-doc-title {
     @apply font-display text-[clamp(1.75rem,3.8vw,2.625rem)] font-normal leading-[1.08] tracking-[-0.025em] text-brand-primary;
     text-wrap: balance;
+    overflow-wrap: anywhere;
   }
 
   .principles-formula {
@@ -715,7 +725,7 @@
   }
 
   .principles-section-quote {
-    @apply mt-4 text-base font-medium italic leading-relaxed text-brand-primary/78 sm:text-[1.0625rem];
+    @apply mt-4 w-full min-w-0 max-w-prose text-base font-medium italic leading-relaxed text-brand-primary/78 sm:text-[1.0625rem];
     font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
     text-wrap: pretty;
   }
@@ -849,12 +859,16 @@
       font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
       @apply text-lg font-semibold leading-snug;
     }
+
+    .p1-section-title {
+      overflow-wrap: anywhere;
+    }
   }
 
   /* ── Principle 01 rich article ── */
 
   .p1-article {
-    @apply space-y-0;
+    @apply min-w-0 w-full max-w-full space-y-0;
   }
 
   .p1-eyebrow {
@@ -862,7 +876,7 @@
   }
 
   .p1-section {
-    @apply border-t border-border/60 py-9 sm:py-10;
+    @apply min-w-0 w-full max-w-full border-t border-border/60 py-9 sm:py-10;
   }
 
   .p1-section--takeaway {
@@ -875,7 +889,7 @@
   }
 
   .p1-section-lead {
-    @apply mt-4 max-w-prose text-[0.9375rem] leading-[1.72] text-brand-primary/82 sm:text-base;
+    @apply mt-4 w-full min-w-0 max-w-prose text-[0.9375rem] leading-[1.72] text-brand-primary/82 sm:text-base;
     font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
     text-wrap: pretty;
   }
@@ -2831,7 +2845,7 @@
   .p-bookend--intro-question,
   .p-bookend--intro-definition,
   .p-bookend--intro-prose {
-    @apply mt-2 mb-2 max-w-prose;
+    @apply mt-2 mb-2 w-full min-w-0 max-w-prose;
   }
 
   .p-bookend-rail {
@@ -2950,15 +2964,17 @@
 
   /* Intro — prose variant + shared note line */
   .p-bookend-prose-lead {
-    @apply mt-3 text-[0.9375rem] leading-[1.72] text-brand-primary/88 sm:text-base;
+    @apply mt-3 w-full min-w-0 text-[0.9375rem] leading-[1.72] text-brand-primary/88 sm:text-base;
     font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
     text-wrap: pretty;
+    overflow-wrap: anywhere;
   }
 
   .p-bookend-prose-note {
-    @apply mt-4 text-sm font-medium leading-relaxed text-brand-primary/62;
+    @apply mt-4 w-full min-w-0 text-sm font-medium leading-relaxed text-brand-primary/62;
     font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
     text-wrap: pretty;
+    overflow-wrap: anywhere;
   }
 
   .p-bookend--intro-definition .p-bookend-prose-note,
@@ -3081,7 +3097,7 @@
   }
 
   .sdd01-diagram {
-    @apply mt-5;
+    @apply mt-5 w-full min-w-0 max-w-full;
   }
 
   .sdd01-panel-foot {
@@ -3097,7 +3113,7 @@
   }
 
   .sdd01-quote-block {
-    @apply mt-5 rounded-r-xl border-l-[3px] border-primary bg-brand-accent-wash/50 px-4 py-4 sm:px-5;
+    @apply mt-5 w-full min-w-0 max-w-full rounded-r-xl border-l-[3px] border-primary bg-brand-accent-wash/50 px-4 py-4 sm:px-5;
   }
 
   .sdd01-quote-block p {
@@ -3125,7 +3141,7 @@
 
   /* Nodes */
   .sdd01-node {
-    @apply relative z-[1] rounded-xl border border-border/70 bg-background/90 px-4 py-3 text-center transition duration-200;
+    @apply relative z-[1] min-w-0 max-w-full rounded-xl border border-border/70 bg-background/90 px-4 py-3 text-center transition duration-200;
   }
 
   .sdd01-node--accent {
@@ -3258,7 +3274,7 @@
 
   /* Centered vertical diagram stack */
   .sdd01-stack-flow {
-    @apply flex w-full flex-col items-center gap-0;
+    @apply flex w-full min-w-0 max-w-full flex-col items-center gap-0;
   }
 
   .sdd01-stack-flow .sdd01-section-label {
@@ -3283,11 +3299,11 @@
 
   /* External panel labels (outside canvas) */
   .sdd01-split-grid {
-    @apply grid items-start gap-4 sm:grid-cols-2;
+    @apply grid w-full min-w-0 max-w-full items-start gap-4 sm:grid-cols-2;
   }
 
   .sdd01-figure-panel {
-    @apply m-0 flex flex-col gap-2;
+    @apply m-0 flex w-full min-w-0 max-w-full flex-col gap-2;
   }
 
   .sdd01-figure-label {
@@ -3295,7 +3311,7 @@
   }
 
   .sdd01-figure-canvas {
-    @apply flex min-h-[8rem] flex-col items-center justify-center gap-0 rounded-xl border px-3 py-4 sm:px-4 sm:py-5;
+    @apply flex min-h-[8rem] w-full min-w-0 max-w-full flex-col items-center justify-center gap-0 rounded-xl border px-3 py-4 sm:px-4 sm:py-5;
   }
 
   .sdd01-figure-canvas--muted {
@@ -3311,7 +3327,7 @@
   }
 
   .sdd01-figure-result {
-    @apply text-center text-sm font-medium leading-snug text-brand-primary/72;
+    @apply w-full min-w-0 max-w-full text-center text-sm font-medium leading-snug text-brand-primary/72;
     font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
     text-wrap: pretty;
   }
@@ -3329,6 +3345,8 @@
     --sdd01-branch-cols: 3;
     display: grid;
     width: 100%;
+    min-width: 0;
+    max-width: 100%;
     grid-template-columns: repeat(var(--sdd01-branch-cols), minmax(0, 1fr));
     column-gap: 0.5rem;
   }
@@ -3353,11 +3371,42 @@
   }
 
   @media (max-width: 639px) {
-    .sdd01-branch-layout--hide-rail-mobile {
+    .sdd01-branch-layout--2,
+    .sdd01-branch-layout--3,
+    .sdd01-branch-layout--4 {
       grid-template-columns: 1fr;
+      width: 100%;
+      max-width: 100%;
+      row-gap: 0;
     }
 
-    .sdd01-branch-layout--hide-rail-mobile .sdd01-branch-rail,
+    .sdd01-branch-layout--2 .sdd01-branch-rail,
+    .sdd01-branch-layout--3 .sdd01-branch-rail,
+    .sdd01-branch-layout--4 .sdd01-branch-rail {
+      display: none;
+    }
+
+    .sdd01-branch-layout--2 .sdd01-branch-col,
+    .sdd01-branch-layout--3 .sdd01-branch-col,
+    .sdd01-branch-layout--4 .sdd01-branch-col {
+      margin-top: 0;
+    }
+
+    .sdd01-branch-layout:not(.sdd01-branch-layout--hide-rail-mobile)
+      .sdd01-branch-col:not(:first-child)
+      .sdd01-branch-drop {
+      display: block;
+      height: var(--sdd01-connector-h);
+      width: 1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .sdd01-branch-layout:not(.sdd01-branch-layout--hide-rail-mobile)
+      .sdd01-branch-col:first-child
+      .sdd01-branch-drop {
+      display: none;
+    }
+
     .sdd01-branch-layout--hide-rail-mobile .sdd01-branch-drop {
       display: none;
     }
@@ -3387,7 +3436,7 @@
   }
 
   .sdd01-fork-entry {
-    @apply flex w-full flex-col items-center gap-0;
+    @apply flex w-full min-w-0 max-w-full flex-col items-center gap-0;
   }
 
   .sdd01-fork-entry > .sdd01-node {
@@ -3484,7 +3533,7 @@
 
   /* Death diagram — storytelling layout */
   .sdd01-death-story {
-    @apply mt-5 rounded-2xl border border-border/60 bg-brand-surface/25 px-4 py-6 sm:px-6 sm:py-8;
+    @apply mt-5 w-full min-w-0 max-w-full rounded-2xl border border-border/60 bg-brand-surface/25 px-4 py-6 sm:px-6 sm:py-8;
   }
 
   .sdd01-death-act {
@@ -3516,8 +3565,9 @@
   }
 
   .sdd01-death-hub-role {
-    @apply text-center font-mono text-[0.625rem] font-semibold leading-tight text-brand-primary/68;
+    @apply min-w-0 text-center font-mono text-[0.625rem] font-semibold leading-tight text-brand-primary/68;
     text-wrap: balance;
+    overflow-wrap: anywhere;
   }
 
   .sdd01-death-v-connector {
@@ -3527,7 +3577,9 @@
   }
 
   .sdd01-death-review-steps {
-    @apply my-1 font-mono text-xs font-semibold tracking-wide text-brand-primary/72;
+    @apply my-1 w-full min-w-0 text-center font-mono text-xs font-semibold tracking-wide text-brand-primary/72;
+    text-wrap: pretty;
+    overflow-wrap: anywhere;
   }
 
   .sdd01-death-docs-shelf {
@@ -3689,7 +3741,7 @@
 
   /* Horizontal pipeline */
   .sdd01-pipeline-wrap {
-    @apply mt-4 first:mt-0;
+    @apply mt-4 w-full min-w-0 max-w-full first:mt-0;
   }
 
   .sdd01-pipeline-label {
@@ -3697,7 +3749,7 @@
   }
 
   .sdd01-pipeline-track {
-    @apply flex gap-2 overflow-x-auto pb-2;
+    @apply flex w-full min-w-0 max-w-full gap-2 overflow-x-auto pb-2;
     list-style: none;
     padding: 0;
     scrollbar-width: thin;
@@ -3722,7 +3774,11 @@
 
   /* Compare flow (centered vertical) */
   .sdd01-compare-flow {
-    @apply flex flex-col items-center gap-0;
+    @apply flex w-full min-w-0 max-w-full flex-col items-center gap-0;
+  }
+
+  .sdd01-compare-flow .sdd01-node {
+    @apply w-full max-w-xs;
   }
 
   .sdd01-compare-flow .sdd01-connector,
@@ -3974,12 +4030,12 @@
   /* ── SDD 02 Constitutional Governance ── */
 
   .sdd02-diagram {
-    @apply mt-5;
+    @apply mt-5 w-full min-w-0 max-w-full;
   }
 
   /* Grouped card container — one connector in/out */
   .sdd02-group {
-    @apply mx-auto w-full max-w-xl rounded-xl border px-4 py-4;
+    @apply mx-auto w-full min-w-0 max-w-xl rounded-xl border px-4 py-4;
   }
 
   .sdd02-group--muted {
@@ -4059,13 +4115,13 @@
   }
 
   .sdd02-soft-outcome {
-    @apply text-center text-xs leading-relaxed text-brand-primary/52;
+    @apply w-full min-w-0 max-w-full px-1 text-center text-xs leading-relaxed text-brand-primary/52;
     font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
     text-wrap: pretty;
   }
 
   .sdd02-hard-outcome {
-    @apply text-center text-xs font-medium leading-relaxed text-primary/85;
+    @apply w-full min-w-0 max-w-full px-1 text-center text-xs font-medium leading-relaxed text-primary/85;
     font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
     text-wrap: pretty;
   }
@@ -4299,7 +4355,7 @@
   /* ── SDD 03 Transformation Automation ── */
 
   .sdd03-diagram {
-    @apply mt-5;
+    @apply mt-5 w-full min-w-0 max-w-full;
   }
 
   .sdd03-leak-note,
@@ -4536,7 +4592,7 @@
   /* ── SDD 04 Living Documentation ── */
 
   .sdd04-diagram {
-    @apply mt-5;
+    @apply mt-5 w-full min-w-0 max-w-full;
   }
 
   .sdd04-diagram-note {
@@ -4685,7 +4741,7 @@
   /* ── SDD 05 Continuous Validation ── */
 
   .sdd05-diagram {
-    @apply mt-5;
+    @apply mt-5 w-full min-w-0 max-w-full;
   }
 
   .sdd05-diagram-note {
@@ -4889,5 +4945,55 @@
 
   .sdd05-diagram .sdd01-connector {
     @apply mx-auto;
+  }
+
+  /* ── SDD docs: shared mobile diagram fixes (principles 01–05) ── */
+  @media (max-width: 639px) {
+    .sdd01-mismatch-row {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+      text-align: center;
+    }
+
+    .sdd01-mismatch-symbol {
+      transform: rotate(90deg);
+      padding-block: 0.25rem;
+    }
+
+    .sdd01-death-scatter-row {
+      grid-template-columns: 1fr;
+      justify-items: stretch;
+      row-gap: 0.5rem;
+    }
+
+    .sdd01-death-scatter-arrow {
+      justify-self: center;
+      transform: rotate(90deg);
+      height: 1.5rem;
+      width: 0.75rem;
+    }
+
+    .sdd01-pipeline-wrap {
+      max-width: 100%;
+    }
+
+    .sdd01-pipeline-step .sdd01-node {
+      min-width: 6.25rem;
+      padding-inline: 0.625rem;
+    }
+
+    .sdd01-figure-canvas {
+      min-width: 0;
+      padding-inline: 0.75rem;
+    }
+
+    .sdd02-chip-row {
+      justify-content: flex-start;
+    }
+
+    .sdd05-gates-node {
+      width: 100%;
+      max-width: none;
+    }
   }
 }

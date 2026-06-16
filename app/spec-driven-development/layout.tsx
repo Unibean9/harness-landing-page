@@ -10,9 +10,9 @@ export default function SpecDrivenDevelopmentLayout({
 }) {
   return (
     <PrinciplesChromeRoot>
-      <div className="min-h-screen flex flex-col bg-background text-foreground">
+      <div className="flex min-h-screen min-w-0 flex-col overflow-x-clip bg-background text-foreground">
         <Header currentPath="/spec-driven-development" />
-        <main id="main-content" className="flex-1 w-full max-w-full">
+        <main id="main-content" className="flex-1 w-full min-w-0 max-w-full overflow-x-clip">
           <PrinciplesMotion />
           {children}
         </main>

@@ -12,9 +12,9 @@ export const metadata: Metadata = buildPageMetadata({
 
 export default function VeChungToiPage() {
   return (
-    <div className="min-h-screen flex flex-col bg-background text-foreground">
+    <div className="flex min-h-screen min-w-0 flex-col overflow-x-clip bg-background text-foreground">
       <Header currentPath="/ve-chung-toi" />
-      <main id="main-content" className="flex-1 w-full max-w-7xl mx-auto px-4 pt-32 pb-16">
+      <main id="main-content" className="mx-auto min-w-0 w-full max-w-full flex-1 overflow-x-clip px-4 pt-32 pb-16">
         <div className="mx-auto grid max-w-7xl gap-10 pt-4 lg:grid-cols-[1fr_1fr]">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand-tertiary mb-3">Sứ mệnh</p>

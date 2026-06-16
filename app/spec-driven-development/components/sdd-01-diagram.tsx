@@ -3,6 +3,7 @@ import {
   sdd01BadHarnessFlow,
   sdd01CascadeSteps,
   sdd01CrmArtifacts,
+  sdd01CrmColumns,
   sdd01CrmSpec,
   sdd01DriftFlow,
   sdd01EngineFlow,
@@ -11,6 +12,8 @@ import {
   sdd01StructuredSpec,
   sdd01TraditionalFlow,
   sdd01VagueSpec,
+  sdd01IacBefore,
+  sdd01IacAfter,
 } from "@/lib/sdd/sdd-01-content";
 import {
   BranchLayout,
@@ -39,10 +42,10 @@ export function Sdd01ProblemDiagram() {
   return (
     <figure className="p1-diagram sdd01-diagram" aria-labelledby="sdd01-problem-caption">
       <DiagramStack>
-        <p className="sdd01-pipeline-label">telephone game model</p>
+        <p className="sdd01-pipeline-label">Mô hình truyền điện thoại</p>
         <FlowChain steps={sdd01TraditionalFlow} leakContext />
         <FlowConnector />
-        <MismatchRow left="Original Intent" right="Final Implementation" />
+        <MismatchRow left="Ý định ban đầu" right="Triển khai cuối" />
       </DiagramStack>
       <p className="sdd01-diagram-note">
         Mỗi lần thông tin truyền từ người này sang người khác, một phần context bị mất đi.
@@ -57,8 +60,8 @@ export function Sdd01ProblemDiagram() {
 export function Sdd01ShiftDiagram() {
   return (
     <ComparePanels
-      badLabel="Trước đây: Read"
-      goodLabel="Executable: Execute"
+      badLabel="Trước đây: Đọc"
+      goodLabel="Executable: Thực thi"
       badResult="Specification là tài liệu tham khảo."
       goodResult="Specification trở thành động cơ của workflow."
       bad={
@@ -67,10 +70,10 @@ export function Sdd01ShiftDiagram() {
           <FlowConnector />
           <div className="sdd01-read-stop">
             <span className="sdd01-read-eye" aria-hidden="true" />
-            <p>Read</p>
+            <p>Đọc</p>
           </div>
           <FlowConnector />
-          <p className="sdd01-dead-end">dead end</p>
+          <p className="sdd01-dead-end">Ngõ cụt</p>
         </div>
       }
       good={
@@ -78,15 +81,15 @@ export function Sdd01ShiftDiagram() {
           <FlowNode label="Specification" variant="accent" />
           <FlowConnector />
           <ForkEntry>
-            <FlowNode label="Execute" variant="accent" />
+            <FlowNode label="Thực thi" variant="accent" />
             <BranchLayout columns={3} entryStem joined className="sdd01-shift-spoke-branch">
-              <span className="sdd01-spoke-pill">Plan</span>
-              <span className="sdd01-spoke-pill">Tasks</span>
-              <span className="sdd01-spoke-pill">Validation</span>
+              <span className="sdd01-spoke-pill">Kế hoạch</span>
+              <span className="sdd01-spoke-pill">Nhiệm vụ</span>
+              <span className="sdd01-spoke-pill">Kiểm tra</span>
             </BranchLayout>
           </ForkEntry>
           <FlowConnector />
-          <p className="sdd01-spoke-caption">workflow engine</p>
+          <p className="sdd01-spoke-caption">động cơ workflow</p>
         </div>
       }
     />
@@ -97,7 +100,7 @@ export function Sdd01WorldsDiagram() {
   return (
     <figure className="p1-diagram sdd01-diagram" aria-labelledby="sdd01-worlds-caption">
       <DiagramSplit>
-        <DiagramPanel label="World 1: Documents" tone="muted">
+        <DiagramPanel label="Thế giới 1: Tài liệu" tone="muted">
           <DiagramStack>
             <div className="sdd01-doc-icon" aria-hidden="true">
               <span />
@@ -105,13 +108,13 @@ export function Sdd01WorldsDiagram() {
               <span />
               <span />
             </div>
-            <FlowNode label="Reference Material" className="sdd01-node--center" />
+            <FlowNode label="Tài liệu tham khảo" className="sdd01-node--center" />
             <FlowConnector />
-            <p className="sdd01-muted-caption">no action</p>
+            <p className="sdd01-muted-caption">không hành động</p>
           </DiagramStack>
         </DiagramPanel>
 
-        <DiagramPanel label="World 2: Engines" tone="accent">
+        <DiagramPanel label="Thế giới 2: Động cơ" tone="accent">
           <div className="sdd01-engine-hub">
             <ForkEntry>
               <FlowNode label="Specification" variant="accent" className="sdd01-node--center" />
@@ -133,7 +136,7 @@ export function Sdd01WorldsDiagram() {
       </DiagramSplit>
 
       <blockquote className="sdd01-quote-block">
-        <p>Good specifications are not documents. Good specifications are engines.</p>
+        <p>Specification tốt không phải tài liệu. Specification tốt là động cơ.</p>
       </blockquote>
 
       <figcaption id="sdd01-worlds-caption" className="p1-diagram-caption">
@@ -147,10 +150,10 @@ export function Sdd01GpsDiagram() {
   return (
     <figure className="p1-diagram sdd01-diagram" aria-labelledby="sdd01-gps-caption">
       <div className="sdd01-gps-flow">
-        <p className="sdd01-section-label">destination input</p>
+        <p className="sdd01-section-label">nhập điểm đến</p>
         <div className="sdd01-gps-input">
           <span className="sdd01-gps-dot" aria-hidden="true" />
-          <p>Go to Da Nang</p>
+          <p>Đi Đà Nẵng</p>
         </div>
 
         <FlowConnector />
@@ -166,9 +169,9 @@ export function Sdd01GpsDiagram() {
         <FlowConnector />
 
         <div className="sdd01-gps-compare">
-          <FlowNode label="Destination Document" variant="dashed" />
+          <FlowNode label="Tài liệu điểm đến" variant="dashed" />
           <FlowConnector direction="right" />
-          <FlowNode label="Navigation System" variant="accent" />
+          <FlowNode label="Hệ thống điều hướng" variant="accent" />
         </div>
       </div>
 
@@ -187,20 +190,20 @@ export function Sdd01DriftDiagram() {
   return (
     <figure className="p1-diagram sdd01-diagram" aria-labelledby="sdd01-drift-caption">
       <DiagramStack>
-        <FlowPipeline steps={realitySteps} label="reality track" variant="default" />
+        <FlowPipeline steps={realitySteps} label="thực tế" variant="default" />
 
         <FlowConnector />
 
         <div className="sdd01-drift-frozen">
-          <p className="sdd01-pipeline-label">documentation track</p>
+          <p className="sdd01-pipeline-label">documentation</p>
           <FlowNode label={frozenStep} variant="accent" className="sdd01-node--center" />
-          <p className="sdd01-frozen-note">stays frozen while reality moves</p>
+          <p className="sdd01-frozen-note">đứng yên trong khi thực tế thay đổi</p>
         </div>
 
         <FlowConnector />
 
-        <MismatchRow left="Reality" right="Documentation" />
-        <p className="sdd01-drift-badge">Documentation Drift</p>
+        <MismatchRow left="Thực tế" right="Documentation" />
+        <p className="sdd01-drift-badge">Documentation lệch pha</p>
       </DiagramStack>
 
       <figcaption id="sdd01-drift-caption" className="p1-diagram-caption">
@@ -223,10 +226,10 @@ export function Sdd01AiDiagram() {
           <ForkEntry>
             <pre>{sdd01VagueSpec}</pre>
             <BranchLayout columns={4} entryStem joined className="sdd01-vague-branch">
-              <span className="sdd01-vague-chip">feature?</span>
+              <span className="sdd01-vague-chip">tính năng?</span>
               <span className="sdd01-vague-chip">workflow?</span>
-              <span className="sdd01-vague-chip">permissions?</span>
-              <span className="sdd01-vague-chip">validation?</span>
+              <span className="sdd01-vague-chip">quyền?</span>
+              <span className="sdd01-vague-chip">kiểm tra?</span>
             </BranchLayout>
           </ForkEntry>
         </div>
@@ -234,19 +237,19 @@ export function Sdd01AiDiagram() {
       good={
         <dl className="sdd01-structured-spec">
           <div>
-            <dt>Goal</dt>
+            <dt>Mục tiêu</dt>
             <dd>{sdd01StructuredSpec.goal}</dd>
           </div>
           <div>
-            <dt>Constraints</dt>
+            <dt>Ràng buộc</dt>
             <dd>{sdd01StructuredSpec.constraints}</dd>
           </div>
           <div>
-            <dt>Acceptance Criteria</dt>
+            <dt>Tiêu chí chấp nhận</dt>
             <dd>{sdd01StructuredSpec.acceptance}</dd>
           </div>
           <div>
-            <dt>Examples</dt>
+            <dt>Ví dụ</dt>
             <dd>{sdd01StructuredSpec.examples}</dd>
           </div>
         </dl>
@@ -259,9 +262,9 @@ export function Sdd01PipelineDiagram() {
   return (
     <figure className="p1-diagram sdd01-diagram" aria-labelledby="sdd01-pipeline-caption">
       <div className="sdd01-pipeline-stack">
-        <FlowPipeline steps={sdd01PipelineSteps} label="speckit pipeline" variant="accent" />
+        <FlowPipeline steps={sdd01PipelineSteps} label="Pipeline SpecKit" variant="accent" />
         <FlowConnector />
-        <FlowPipeline steps={sdd01CascadeSteps} label="when spec changes" variant="default" />
+        <FlowPipeline steps={sdd01CascadeSteps} label="Khi spec thay đổi" variant="default" />
       </div>
       <figcaption id="sdd01-pipeline-caption" className="p1-diagram-caption">
         Mỗi artifact sinh ra từ artifact trước. Khi specification thay đổi, toàn bộ hệ thống cập
@@ -275,13 +278,13 @@ export function Sdd01CrmDiagram() {
   return (
     <figure className="p1-diagram sdd01-diagram" aria-labelledby="sdd01-crm-caption">
       <div className="sdd01-crm-flow">
-        <FlowNode label="Specification" hint="admissions CRM" variant="accent" className="sdd01-node--center" />
+        <FlowNode label="Specification" hint="CRM tuyển sinh" variant="accent" className="sdd01-node--center" />
 
         <FlowConnector />
 
         <ForkEntry>
           <div className="sdd01-crm-spec-block">
-            <p className="sdd01-section-label">requirements</p>
+            <p className="sdd01-section-label">yêu cầu</p>
             <ul className="sdd01-spec-list sdd01-spec-list--compact">
               {sdd01CrmSpec.map((line) => (
                 <li key={line}>{line}</li>
@@ -290,21 +293,16 @@ export function Sdd01CrmDiagram() {
           </div>
 
           <BranchLayout columns={3} entryStem joined className="sdd01-crm-branch" hideRailOnMobile>
-          {(["Plan", "Tasks", "Validation"] as const).map((title) => {
-            const items =
-              title === "Plan"
-                ? sdd01CrmArtifacts.plan
-                : title === "Tasks"
-                  ? sdd01CrmArtifacts.tasks
-                  : sdd01CrmArtifacts.validation;
+          {sdd01CrmColumns.map((column) => {
+            const items = sdd01CrmArtifacts[column.key];
 
             return (
-              <div key={title} className="sdd01-artifact-column-wrap">
+              <div key={column.key} className="sdd01-artifact-column-wrap">
                 <div className="sdd01-crm-mobile-drop sm:hidden">
                   <FlowConnector />
                 </div>
                 <div className="sdd01-artifact-column">
-                  <p className="sdd01-artifact-heading">{title}</p>
+                  <p className="sdd01-artifact-heading">{column.label}</p>
                   <ul>
                     {items.map((item) => (
                       <li key={item}>{item}</li>
@@ -344,11 +342,11 @@ export function Sdd01HarnessDiagram() {
             <FlowConnector />
             <div className="sdd01-harness-shell">
               <p className="sdd01-harness-shell-title">Harness</p>
-              <p className="sdd01-harness-shell-hint">context · tools · validate</p>
+              <p className="sdd01-harness-shell-hint">context · công cụ · kiểm tra</p>
               <FlowNode label="Agent" />
             </div>
             <FlowConnector />
-            <FlowNode label="Output" variant="accent" />
+            <FlowNode label="Kết quả" variant="accent" />
           </div>
         }
       />
@@ -373,14 +371,14 @@ export function Sdd01IacDiagram() {
       <ComparePanels
         badLabel="Trước đây"
         goodLabel="Infrastructure as Code"
-        badResult="Specification as Documentation"
-        goodResult="Specification as Infrastructure"
-        bad={<FlowChain steps={["Infrastructure Document", "Humans Build Servers"]} />}
+        badResult="Specification như documentation"
+        goodResult="Specification như infrastructure"
+        bad={<FlowChain steps={sdd01IacBefore} />}
         good={
           <div className="sdd01-compare-flow">
             <FlowNode label="Terraform" variant="accent" />
             <FlowConnector />
-            <FlowNode label="Infrastructure" hint="auto-provisioned" variant="accent" />
+            <FlowNode label="Hạ tầng" hint="tự động dựng" variant="accent" />
           </div>
         }
       />
