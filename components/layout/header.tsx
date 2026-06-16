@@ -148,7 +148,7 @@ export function Header({ showSidebarToggle, isSidebarOpen, onToggleSidebar }: He
                         aria-hidden="true"
                       />
                     ) : null}
-                    <span className="relative z-10">{item.label}</span>
+                    <span className="relative z-10">{item.shortLabel ?? item.label}</span>
                   </Link>
                 );
               })}
@@ -264,7 +264,7 @@ export function Header({ showSidebarToggle, isSidebarOpen, onToggleSidebar }: He
                       <span className="site-header-toc-index" aria-hidden="true">
                         {TOC_ROMAN[index]}
                       </span>
-                      <span className="site-header-toc-label">{item.label}</span>
+                      <span className="site-header-toc-label">{item.shortLabel ?? item.label}</span>
                     </Link>
                   </motion.div>
                 );

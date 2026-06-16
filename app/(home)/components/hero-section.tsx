@@ -48,9 +48,9 @@ export function HeroSection() {
           </div>
 
           <div className="space-y-6" data-hero-item>
-            <h1 className="font-display text-[clamp(3rem,7vw,5.25rem)] leading-[0.92] font-bold tracking-[-0.035em] text-brand-primary text-balance">
+            <h1 className="font-display text-[clamp(2.35rem,5.8vw,4.75rem)] leading-[0.95] font-bold tracking-[-0.03em] text-brand-primary text-balance">
               Harness{" "}
-              <span className="text-primary italic">Engineering</span>
+              <span className="text-primary italic">Engineering</span> for Software Development
             </h1>
             <p className="max-w-2xl font-display text-[clamp(1.35rem,2.8vw,2rem)] font-semibold leading-snug tracking-[-0.015em] text-brand-primary/88 text-pretty">
               Kỹ thuật thiết lập môi trường hoạt động cho AI
